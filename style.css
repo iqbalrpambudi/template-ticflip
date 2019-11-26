@@ -1,0 +1,24 @@
+.card-img-caption {
+  overflow: hidden;
+}
+
+.card-img-caption img {
+  transition: transform 0.5s ease;
+  filter: brightness(80%);
+}
+
+.card-img-caption:hover img {
+  transform: scale(1.1);
+}
+
+.card-img-caption .card-img-top {
+  z-index: 0;
+}
+
+.card-img-caption .card-text {
+  text-align: center;
+  width: 100%;
+  margin: 33% 0;
+  position: absolute;
+  z-index: 1;
+}
