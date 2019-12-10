@@ -17,7 +17,7 @@ include './homepagemodule/getdata.php'; ?>
 
 <!-- Daftar Paket -->
 <div class="container border rounded py-5 px-5 bg-white mt-5">
-    <h3 class="font-weight-bold">Pilihan Paket</h3>
+    <h3 class="font-weight-bold">Pilihan Paket Tour</h3>
     <div class="row">
         <?php foreach ($tourQuery as $datas) : ?>
             <div class="col-md-4">
