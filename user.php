@@ -1,6 +1,6 @@
     <!-- Import Header (Navbar) & Fungsi Module User -->
     <?php include './components/header.php';
-    include './module/usermodule.php'
+    include './usermodule/usermodule.php'
     ?>
 
     <div class="container mt-5">
@@ -37,31 +37,34 @@
 
                 <!-- Item tab menu -->
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">Dashboard</div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <h4>Profile</h4>
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                        <h5><i class="fas fa-tachometer-alt"></i> Dashboard</h5>
                         <hr>
-                        <?php require_once "./module/profile.php" ?>
+                        <?php require_once "./usermodule/dashboard.php" ?>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h5><i class="fas fa-users"></i> Profile</h5>
+                        <hr>
+                        <?php require_once "./usermodule/profile.php" ?>
                     </div>
                     <div class="tab-pane fade" id="tagihan" role="tabpanel" aria-labelledby="tagihan-tab">
-                        <h4>Tagihan</h4>
+                        <h5><i class="fas fa-money-bill-alt"></i> Tagihan</h5>
                         <hr>
-                        <?php require_once "./module/tagihan.php" ?>
+                        <?php require_once "./usermodule/tagihan.php" ?>
                     </div>
                     <div class="tab-pane fade" id="keranjang" role="tabpanel" aria-labelledby="keranjang-tab">
-                        <h4>Keranjang</h4>
+                        <h5><i class="fas fa-shopping-cart"></i> Keranjang</h5>
                         <hr>
-                        <?php require_once "./module/keranjang.php" ?>
+                        <?php require_once "./usermodule/keranjang.php" ?>
                     </div>
                     <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
-                        <h4>History Pembayaran</h4>
+                        <h5><i class="fas fa-book"></i> History Pembayaran</h5>
                         <hr>
-                        <?php require_once "./module/history.php" ?>
+                        <?php require_once "./usermodule/history.php" ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <?php include './components/footer.php' ?>
+    <!-- Footer -->
+    <?php include './components/footer.php'; ?>

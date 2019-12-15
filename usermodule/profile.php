@@ -1,4 +1,4 @@
-<form action="./module/edituser.php" method="POST" enctype="multipart/form-data">
+<form action="./usermodule/edituser.php" method="POST" enctype="multipart/form-data">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="username">Username</label>

@@ -22,3 +22,11 @@
   position: absolute;
   z-index: 1;
 }
+
+.card-img-caption .card-rating {
+  text-align: center;
+  width: 100%;
+  margin: 43% 0;
+  position: absolute;
+  z-index: 1;
+}

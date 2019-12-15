@@ -41,14 +41,14 @@
                                 . $tax['tanggal'] . "\n"
                                 . $tax['status'],
                             // Output QR Image
-                            $tax['id_pembayaran'] . "qr.png",
+                            "./qr/" . $tax['id_pembayaran'] . "qr.png",
                             "L",
                             4,
                             4
                         );
                         ?>
                     <!-- Print Qr Code -->
-                    <img src="<?php echo $tax['id_pembayaran']; ?>qr.png" width="100px" />
+                    <img src="<?php echo "/qr/" . $tax['id_pembayaran']; ?>qr.png" width="100px" />
                 </div>
             </div>
         </div>

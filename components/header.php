@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
 
     <!-- Icons -->
-    <script src="./fontawesome/js/all.min.js"></script>
+    <script src="./assets/fontawesome/js/all.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./style.css">
@@ -19,7 +19,7 @@
 </head>
 
 <body class="bg-light">
-<nav class="navbar navbar-expand-lg bg-white navbar-light">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light">
         <div class="container">
 
             <!-- Brand -->
@@ -28,8 +28,7 @@
             </a>
 
             <!-- Button -->
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -53,6 +52,7 @@
                     <a href="login.php"><button type="button" class="btn btn-info">Login</button></a>
                     <a href="register.php"><button type="button" class="btn btn-info">Register</button></a>
                 </div>
+
             </div>
         </div>
     </nav>
