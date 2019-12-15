@@ -31,15 +31,15 @@ if (isset($_SESSION['promo'])) { ?>
                     <div class="card mx-auto mb-3">
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $datas['nama']; ?></h5>
-                            <span class="card-rating"><?php $id = $datas['id_tour'];
-                                                            $tourRate = mysqli_query($conn, "SELECT AVG(rate) as avg FROM tb_rating where id_tour='$id'");
-                                                            $rating = mysqli_fetch_assoc($tourRate);
-                                                            for ($i = 0; $i < ceil($rating['avg']); $i++) {
-                                                                echo '<i class="fa fa-star text-warning"></i>';
-                                                            }
-                                                            ?></span>
                             <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">
                         </div>
+                        <h6 class="text-dark ml-2 mt-2">Rating</h6><span class="card-rating ml-2"><?php $id = $datas['id_tour'];
+                                                                                                        $tourRate = mysqli_query($conn, "SELECT AVG(rate) as avg FROM tb_rating where id_tour='$id'");
+                                                                                                        $rating = mysqli_fetch_assoc($tourRate);
+                                                                                                        for ($i = 0; $i < ceil($rating['avg']); $i++) {
+                                                                                                            echo '<i class="fa fa-star text-warning"></i>';
+                                                                                                        }
+                                                                                                        ?></span>
                     </div>
                 </a>
             </div>
