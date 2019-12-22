@@ -14,7 +14,7 @@
     <script src="./assets/fontawesome/js/all.min.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/style/style.css">
     <title>Deskripsi</title>
 </head>
 
@@ -23,7 +23,7 @@
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="homepage.php">
                 <h2 class="text-dark">TicFlip</h2>
             </a>
 
@@ -48,10 +48,22 @@
                     </li>
 
                 </ul>
-                <div class="nav-item ml-3">
-                    <a href="login.php"><button type="button" class="btn btn-info">Login</button></a>
-                    <a href="register.php"><button type="button" class="btn btn-info">Register</button></a>
-                </div>
+                <?php session_start();
+                if (isset($_SESSION['username'])) { ?>
+                    <div class="nav-item ml-3">
+                        <h5 class=""><?php echo $_SESSION['username']; ?></h5>
+                    </div>
+                    <div class="nav-item ml-3">
+                        <a href="./loginmodule/logout.php"><button type="button" class="btn btn-info">Logout</button></a>
+                    </div>
+                <?php } else { ?>
+                    <div class="nav-item ml-3">
+                        <a href="login.php"><button type="button" class="btn btn-info">Login</button></a>
+                        <a href="register.php"><button type="button" class="btn btn-info">Register</button></a>
+                    </div>
+                <?php }
+                session_abort();
+                ?>
 
             </div>
         </div>

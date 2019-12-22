@@ -53,15 +53,47 @@
                     ?>
                 </div>
                 <div class="row mt-3 p-2">
-                    <div class="col-lg-6">
-                        <h5>Pilih Tanggal</h5>
-                        <input type="date" name="tanggal" id="tanggal" class="form-control">
-                    </div>
-                    <div class="col-lg-6 align-self-center">
-                        <a href="#" class="btn btn-secondary">
-                            Order
-                        </a>
-                    </div>
+                    <form action="checkout.php" method="post">
+                        <div class="col-lg-12">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td>
+                                        <h5>Pilih Tanggal</h5>
+                                        <input required type="date" name="tanggal" id="tanggal" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Jumlah Orang</h5>
+                                        <input type="number" min="10" max="50" required name="jumlah" id="jumlah" class="form-control">
+                                    </td>
+                                    <td>
+                                        <h5>Penginapan</h5>
+                                        <select id="inputState" name='penginapan' class="form-control">
+                                            <option value="0" selected>Choose...</option>
+                                            <?php foreach ($penginapanquery as $penginapan) : ?>
+                                                <option value="<?php echo $penginapan['id_penginapan'] ?>"><?php echo $penginapan['nama'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <h5>Bus</h5>
+                                        <select id="inputState" name='kendaraan' class="form-control">
+                                            <option value="0" selected>Tanpa Bus</option>
+                                            <?php foreach ($busquery as $bus) : ?>
+                                                <option value="<?php echo $bus['id_kendaraan'] ?>"><?php echo $bus['nama'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <input type="hidden" required name="id" class="form-control" value="<?php echo $_GET['id'] ?>">
+                            </table>
+
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            <input class="btn btn-success" type="submit" name="submit" value="Order">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -24,17 +24,17 @@ include './deskripsimodule/getdata.php' ?>
             </h3>
         </div>
         <div class="col-md-7 border rounded p-4 bg-white">
-            <li class="list-group-item borderless bg-transparent">
+            <div class="container p-2">
                 <?php
                 echo $datatiket["deskripsi"];
                 ?>
-            </li>
-            <div class="container">
-                <div class="float-left p-2 ">
+            </div>
+            <div class="row mt-3 p-2">
+                <div class="col-lg-6">
                     <h5>Pilih Tanggal</h5>
                     <input type="date" name="tanggal" id="tanggal" class="form-control">
                 </div>
-                <div class="float-right p-5">
+                <div class="col-lg-6 align-self-center">
                     <a href="#" class="btn btn-secondary">
                         Order
                     </a>

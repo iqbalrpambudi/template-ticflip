@@ -17,11 +17,11 @@
     </div>
     <div class="form-group">
         <label for="alamat">Alamat</label>
-        <input type="text" class="form-control" name="alamat" id="alamat" value="Jln Raya">
+        <input type="text" class="form-control" name="alamat" id="alamat" value="<?php echo $getUserData['alamat']; ?>">
     </div>
     <div class="form-group">
         <label for="upload">Upload Foto</label><br>
         <input type="file" name="file" id="upload" value="Jln Raya">
     </div>
-    <button type="submit" name="update" class="btn btn-primary">Perbarui</button>
+    <button type="submit" name="submit" class="btn btn-primary">Perbarui</button>
 </form>

@@ -1,4 +1,9 @@
 <?php
+
+$nama = $_POST['nama'];
+$email = $_POST['email'];
+$alamat = $_POST['alamat'];
+
 // ambil data file
 $namaFile = $_FILES['file']['name'];
 $namaSementara = $_FILES['file']['tmp_name'];
@@ -17,7 +22,8 @@ if ($lastPic['foto']) {
 
 $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
 
-mysqli_query($conn, "UPDATE tb_user SET foto = '$namaFile' WHERE tb_user.username = '$username'");
+mysqli_query($conn, "UPDATE `tb_user` SET `nama` = '$nama', `email` = '$email', `alamat` = '$alamat', `foto` = '$namaFile' WHERE `tb_user`.`username` = '$username'");
 if ($terupload) {
     header('location:../user.php');
+    // var_dump($nama);
 } else { }

@@ -1,10 +1,7 @@
 <?php
 session_start();
-include("./loginmodule/koneksi.php");
-if (isset($_SESSION['username'])) {
-	if ($_SESSION['username']) {
-		header('location:./user.php');
-	}
+if (isset($_SESSION["email"])) {
+	header("location:../user.php");
 }
 ?>
 <!DOCTYPE html>
@@ -14,7 +11,7 @@ if (isset($_SESSION['username'])) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login</title>
+	<title>Forgot Password</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -45,7 +42,7 @@ if (isset($_SESSION['username'])) {
 
 		.login-form {
 			width: 350px;
-			margin: 215px auto;
+			margin: 170px auto;
 			text-align: center;
 		}
 
@@ -97,8 +94,9 @@ if (isset($_SESSION['username'])) {
 
 <body>
 	<div class="login-form">
-		<form action="./loginmodule/doLogin.php" method="post">
-			<h2 class="text-center">Login</h2>
+		<form action="doforget.php" method="post">
+			<h2 class="text-center">Forgot Password?</h2>
+			<p class="text-center">You can reset your password here</p><br />
 			<?php
 			if (isset($_SESSION["message"])) {
 				echo $_SESSION["message"];
@@ -106,16 +104,18 @@ if (isset($_SESSION['username'])) {
 			}
 			?>
 			<div class="form-group has-error">
-				<input type="text" class="form-control" name="inputUsername" placeholder="Username" required="required">
+				<input type="text" class="form-control" name="inputEmail" placeholder="email" required="required">
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control" name="inputPassword" placeholder="Password" required="required">
+				<input type="password" class="form-control" name="inputPassword1" placeholder="New Password" required="required">
 			</div>
 			<div class="form-group">
-				<button type="submit" name="login" class="btn btn-primary btn-lg btn-block">Login</button>
+				<input type="password" class="form-control" name="inputPassword2" placeholder="confirm Password" required="required">
 			</div>
-			<p class="text-center small"><a href="./loginmodule/forgot.php">Lost your Password?</a></p><br />
-			<p class="text-center small">Don't have an account? <a href="register.php">Sign up here!</a></p>
+			<div class="form-group">
+				<button type="submit" name="change" class="btn btn-primary btn-lg btn-block">Reset Password</button>
+			</div>
+			<p class="text-center small"><a href="../login.php">Back</a></p>
 		</form>
 	</div>
 </body>

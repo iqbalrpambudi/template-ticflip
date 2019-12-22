@@ -3,8 +3,14 @@
         <div class="card-body">
 
             <!-- Form Tiket -->
-
-            <form>
+            <form action="./usermodule/doPay.php" method="POST">
+                <!-- Id -->
+                <input type="hidden" name="id" value="<?php echo $get['id_checkout']; ?>">
+                <input type="hidden" name="id_item" value="<?php if ($get['id_tiket']) {
+                                                                    echo $get['id_tiket'];
+                                                                } else if ($get['id_tour']) {
+                                                                    echo $get['id_tour'];
+                                                                } ?>">
                 <!-- Tiket -->
                 <div class="form-group row">
                     <label for="tiket" class="col-sm-3 col-form-label"><?php if ($get['id_tiket']) {
@@ -13,11 +19,11 @@
                                                                                 echo 'Paket';
                                                                             } ?></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" value="<?php if ($get['id_tiket']) {
-                                                                                echo $get['tiket'];
-                                                                            } else if ($get['id_tour']) {
-                                                                                echo $get['tour'];
-                                                                            } ?>" disabled>
+                        <input type="text" name="item" class="form-control" value="<?php if ($get['id_tiket']) {
+                                                                                            echo $get['tiket'];
+                                                                                        } else if ($get['id_tour']) {
+                                                                                            echo $get['tour'];
+                                                                                        } ?>" readonly>
                     </div>
                 </div>
 
@@ -25,19 +31,19 @@
                 <div class="form-group row">
                     <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                     <div class="col-sm-9">
-                        <input type="number" min="1" max="10" class="form-control" id="jumlah" value="<?php echo $get['jumlah']; ?>">
+                        <input type="number" name="jumlah" min="1" max="10" class="form-control" id="jumlah" value="<?php echo $get['jumlah']; ?>">
                     </div>
                 </div>
 
                 <!-- Harga -->
                 <div class="form-group row">
-                    <label for="harga" class="col-sm-3 col-form-label">Harga</label>
+                    <label class="col-sm-3 col-form-label">Harga</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="harga" value="Rp. <?php if ($get['id_tiket']) {
-                                                                                                echo $get['harga_tiket'];
-                                                                                            } else if ($get['id_tour']) {
-                                                                                                echo $get['harga_tour'];
-                                                                                            } ?>" disabled>
+                        <input type="text" name="harga" class="form-control" value="<?php if ($get['id_tiket']) {
+                                                                                            echo $get['harga_tiket'];
+                                                                                        } else if ($get['id_tour']) {
+                                                                                            echo $get['harga_tour'];
+                                                                                        } ?>" readonly>
                     </div>
                 </div>
 
@@ -45,15 +51,15 @@
                 <div class="form-group row">
                     <label for="total" class="col-sm-3 col-form-label">Total</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="total" value="Rp. <?php if ($get['id_tiket']) {
-                                                                                                echo $get['harga_tiket'] * $get['jumlah'];
-                                                                                            } else if ($get['id_tour']) {
-                                                                                                echo $get['harga_tour'] * $get['jumlah'];
-                                                                                            } ?>" disabled>
+                        <input type="text" class="form-control" name="total" id="total" value="Rp. <?php if ($get['id_tiket']) {
+                                                                                                            echo $get['harga_tiket'] * $get['jumlah'];
+                                                                                                        } else if ($get['id_tour']) {
+                                                                                                            echo $get['harga_tour'] * $get['jumlah'];
+                                                                                                        } ?>" readonly>
                     </div>
                 </div>
 
-                <!-- Harga -->
+                <!-- Pembayaran -->
                 <fieldset class="form-group">
                     <div class="row">
                         <legend class="col-form-label col-sm-3 pt-0">Pembayaran</legend>
@@ -88,8 +94,8 @@
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <hr>
-                        <button type="submit" class="btn btn-success">Konfirmasi</button>
-                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="submit" name="submit" class="btn btn-success">Bayar</button>
+                        <button type="submit" name="hapus" class="btn btn-danger">Hapus</button>
                     </div>
                 </div>
             </form>
