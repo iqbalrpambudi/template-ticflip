@@ -1,5 +1,6 @@
 <?php
 
+// Ambil data
 $nama = $_POST['nama'];
 $email = $_POST['email'];
 $alamat = $_POST['alamat'];
@@ -9,21 +10,26 @@ $namaFile = $_FILES['file']['name'];
 $namaSementara = $_FILES['file']['tmp_name'];
 $username = $_POST['username'];
 
-// tentukan lokasi file akan dipindahkan
+// lokasi file yang akan diupload
 $dirUpload = "../assets/profile/";
 
+// Ambil nama gambar sebelumnya di database
 $conn = mysqli_connect('localhost', 'root', '', 'ticflip');
 $lastPicQuery = mysqli_query($conn, "SELECT foto FROM tb_user WHERE username='$username'");
 $lastPic = mysqli_fetch_assoc($lastPicQuery);
 
+// jika nama gambar ada di database maka hapus 
 if ($lastPic['foto']) {
     unlink($dirUpload . $lastPic['foto']);
 }
 
+// memindahkan file ke direktori server
 $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
 
+// update nama gambar ke database
 mysqli_query($conn, "UPDATE `tb_user` SET `nama` = '$nama', `email` = '$email', `alamat` = '$alamat', `foto` = '$namaFile' WHERE `tb_user`.`username` = '$username'");
 if ($terupload) {
     header('location:../user.php');
-    // var_dump($nama);
-} else { }
+} else {
+    header('location:../user.php');
+}

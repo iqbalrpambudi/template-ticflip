@@ -46,25 +46,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="tiket.php"><i class="fas fa-ticket-alt mr-2"></i>Tiket</a>
                     </li>
-
                 </ul>
-                <?php session_start();
-                if (isset($_SESSION['username'])) { ?>
-                    <div class="nav-item ml-3">
-                        <h5 class=""><?php echo $_SESSION['username']; ?></h5>
-                    </div>
-                    <div class="nav-item ml-3">
-                        <a href="./loginmodule/logout.php"><button type="button" class="btn btn-info">Logout</button></a>
-                    </div>
-                <?php } else { ?>
-                    <div class="nav-item ml-3">
-                        <a href="login.php"><button type="button" class="btn btn-info">Login</button></a>
-                        <a href="register.php"><button type="button" class="btn btn-info">Register</button></a>
-                    </div>
-                <?php }
-                session_abort();
-                ?>
-
+                <ul class="navbar-nav">
+                    <?php session_start();
+                    if (isset($_SESSION['username'])) { ?>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                Welcome, <?php echo ucfirst($_SESSION['username']); ?><b class="caret"></b>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="./loginmodule/logout.php">Logout</a>
+                            </div>
+                        </li>
+                        <!--  -->
+                    <?php } else { ?>
+                        <div class="nav-item ml-3">
+                            <a href="login.php"><button type="button" class="btn btn-success">Login</button></a>
+                            <a href="register.php"><button type="button" class="btn btn-primary">Register</button></a>
+                        </div>
+                    <?php }
+                    session_abort();
+                    ?>
+                </ul>
             </div>
         </div>
     </nav>

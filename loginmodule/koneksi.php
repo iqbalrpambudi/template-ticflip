@@ -3,10 +3,8 @@ $host = 'localhost';
 $username = 'root';
 $password = '';
 $database = 'ticflip';
-$connect = mysqli_connect($host, $username, $password, $database) or die("Koneksi gagal");
+$connect = mysqli_connect($host, $username, $password, $database);
 
-if ($connect) {
-	//echo "koneksi berhasil";
-} else {
+if (!$connect) {
 	echo "koneksi gagal";
 }
