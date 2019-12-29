@@ -2,7 +2,7 @@
 include './deskripsimodule/getdata.php' ?>
 
 <!-- Daftar Paket -->
-<div class="container mt-5 vh-100">
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-4 mb-3 border rounded p-4 bg-white mx-2">
             <a href="#">
@@ -22,23 +22,26 @@ include './deskripsimodule/getdata.php' ?>
                     echo number_format($datatiket["harga"], 0, ',', '.');
                     ?>
             </h3>
+            <div class="row mt-3 p-2">
+                <div class="col-lg-12">
+                    <form action="checkout.php" method="get">
+                        <input type="hidden" name="id" value="<?php echo $datatiket["id_tiket"]; ?>">
+                        <input type="hidden" name="nama" value="<?php echo $datatiket["nama"]; ?>">
+                        <input type="hidden" name="harga" value="<?php echo $datatiket["harga"]; ?>">
+                        <h5 class="mt-2">Pilih Tanggal</h5>
+                        <input required type="date" name="tanggal" class="form-control">
+                        <h5 class="mt-2">Jumlah Tiket</h5>
+                        <input required type="number" min="1" max="10" name="jumlah" class="form-control">
+                        <button type="submit" class=" mt-3 btn btn-success">Order</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="col-md-7 border rounded p-4 bg-white">
             <div class="container p-2">
                 <?php
                 echo $datatiket["deskripsi"];
                 ?>
-            </div>
-            <div class="row mt-3 p-2">
-                <div class="col-lg-6">
-                    <h5>Pilih Tanggal</h5>
-                    <input type="date" name="tanggal" id="tanggal" class="form-control">
-                </div>
-                <div class="col-lg-6 align-self-center">
-                    <a href="#" class="btn btn-secondary">
-                        Order
-                    </a>
-                </div>
             </div>
         </div>
     </div>

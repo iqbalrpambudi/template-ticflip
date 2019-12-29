@@ -1,5 +1,5 @@
 <?php
-include './koneksi.php';
+include '../usermodule/koneksi.php';
 session_start();
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
@@ -27,12 +27,12 @@ if (isset($_POST['submit'])) {
     $insert = mysqli_query($conn, "INSERT INTO `tb_pembayaran` (`id_pembayaran`, `id_checkout`, `username`,`id_item`,`item`, `metode`, `tanggal`, `barcode`, `status`,`konfirmasi`) VALUES ('$kode', '$id', '$username','$id_item', '$item', '$metode', '$date', 'das', 'belum lunas','0');");
     if ($insert) {
         mysqli_query($conn, "UPDATE `tb_checkout` SET `status` = '1',`jumlah` = '$jumlah', `total`='$total' WHERE `tb_checkout`.`id_checkout` = '$id'");
-        header('location:../user.php');
+        header('location:../konfirmasi.php');
     }
     echo mysqli_error($insert);
 } elseif (isset($_POST['hapus'])) {
     $id = $_POST['id'];
     $username = $_SESSION['username'];
-    mysqli_query($conn, "DELETE FROM `tb_checkout` WHERE `tb_checkout`.`id_checkout` = 'OR004'");
-    header('location:../user.php');
+    mysqli_query($conn, "DELETE FROM `tb_checkout` WHERE `tb_checkout`.`id_checkout` = '$id'");
+    header('location:../pembayaran.php');
 }

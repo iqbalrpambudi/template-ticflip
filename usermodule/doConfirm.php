@@ -1,6 +1,7 @@
 <?php
 include './koneksi.php';
 session_start();
+var_dump($_POST['id']);
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
     $username = $_SESSION['username'];

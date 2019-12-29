@@ -27,7 +27,7 @@ $getUserProfile = mysqli_fetch_assoc($queryprofile);
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand" href="homepage.php">
+            <a class="navbar-brand" href="../homepage.php">
                 <h2 class="text-dark">TicFlip</h2>
             </a>
 
