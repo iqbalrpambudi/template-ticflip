@@ -1,8 +1,8 @@
 <!-- Berisi Module untuk admin -->
 <?php
 session_start();
-if (empty($_SESSION)) {
-    header("Location:./login.php");
+if (!$_SESSION['username']) {
+    header('Location:./login.php');
 }
 
 include 'koneksi.php';

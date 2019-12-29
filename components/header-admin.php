@@ -68,8 +68,8 @@ $getUserProfile = mysqli_fetch_assoc($queryprofile);
                         <!--  -->
                     <?php } else { ?>
                         <div class="nav-item ml-3">
-                            <a href="../login.php"><button type="button" class="btn btn-success">Login</button></a>
-                            <a href="../register.php"><button type="button" class="btn btn-primary">Register</button></a>
+                            <a href="login.php"><button type="button" class="btn btn-success">Login</button></a>
+                            <a href="register.php"><button type="button" class="btn btn-primary">Register</button></a>
                         </div>
                     <?php }
                     session_abort();
@@ -83,38 +83,38 @@ $getUserProfile = mysqli_fetch_assoc($queryprofile);
     <div class="row no-gutters">
         <div class=" col-md-2 bg-dark">
             <?php if (!$getUserProfile['foto']) { ?>
-                <img src="/assets/default.png" class="card-img-top " alt="...">
+                <img src="../assets/default.png" class="card-img-top " alt="...">
             <?php } else { ?>
-                <img src="/assets/profile/<?php echo $getUserProfile['foto'] ?>" class="card-img-top " alt="...">
+                <img src="../assets/profile/<?php echo $getUserProfile['foto'] ?>" class="card-img-top " alt="...">
             <?php }; ?>
             <hr class="bg-secondary">
             <ul class="nav flex-column ml-3 mb-5">
                 <li class="nav-item">
-                    <a class="nav-link active text-white" href="/admin/admin.php"><i class="fa fa-tachometer-alt mr-2"></i>Dashboard</a>
+                    <a class="nav-link active text-white" href="admin.php"><i class="fa fa-tachometer-alt mr-2"></i>Dashboard</a>
                     <hr class="bg-secondary">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/dfttiket.php"><i class="fas fa-ticket-alt mr-2"></i>Daftar Tiket</a>
+                    <a class="nav-link text-white" href="dfttiket.php"><i class="fas fa-ticket-alt mr-2"></i>Daftar Tiket</a>
                     <hr class="bg-secondary">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/dftpaket.php"><i class="fas fa-box mr-2"></i>Daftar Paket Tour</a>
+                    <a class="nav-link text-white" href="dftpaket.php"><i class="fas fa-box mr-2"></i>Daftar Paket Tour</a>
                     <hr class="bg-secondary">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/dftpromo.php"><i class="fas fa-percent mr-2"></i>Daftar Promo</a>
+                    <a class="nav-link text-white" href="dftpromo.php"><i class="fas fa-percent mr-2"></i>Daftar Promo</a>
                     <hr class="bg-secondary">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/dftuser.php"><i class="fa fa-users mr-2" aria-hidden="true"></i>Daftar User</a>
+                    <a class="nav-link text-white" href="dftuser.php"><i class="fa fa-users mr-2" aria-hidden="true"></i>Daftar User</a>
                     <hr class="bg-secondary">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/dftcheckout.php"><i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i>Daftar Checkout</a>
+                    <a class="nav-link text-white" href="dftcheckout.php"><i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i>Daftar Checkout</a>
                     <hr class="bg-secondary">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/dftpembayaran.php"><i class="fa fa-credit-card mr-2" aria-hidden="true"></i>Daftar Pembayaran</a>
+                    <a class="nav-link text-white" href="dftpembayaran.php"><i class="fa fa-credit-card mr-2" aria-hidden="true"></i>Daftar Pembayaran</a>
                     <hr class="bg-secondary">
                 </li>
             </ul>

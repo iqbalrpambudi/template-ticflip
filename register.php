@@ -13,7 +13,7 @@
 	<style type="text/css">
 		body {
 			color: #fff;
-			background-image: url('../assets/hero.jpg');
+			background-image: url('./assets/hero.jpg');
 			background-position: center;
 			background-repeat: no-repeat;
 		}
