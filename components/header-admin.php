@@ -83,9 +83,9 @@ $getUserProfile = mysqli_fetch_assoc($queryprofile);
     <div class="row no-gutters">
         <div class=" col-md-2 bg-dark">
             <?php if (!$getUserProfile['foto']) { ?>
-                <img src="/assets/default.png" class="card-img-top " alt="...">
+                <img src="../assets/default.png" class="card-img-top " alt="...">
             <?php } else { ?>
-                <img src="/assets/profile/<?php echo $getUserProfile['foto'] ?>" class="card-img-top " alt="...">
+                <img src="../assets/profile/<?php echo $getUserProfile['foto'] ?>" class="card-img-top " alt="...">
             <?php }; ?>
             <hr class="bg-secondary">
             <ul class="nav flex-column ml-3 mb-5">

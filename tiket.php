@@ -1,12 +1,12 @@
 <?php
 include './components/header.php';
-include './pakettourmodule/getdata.php';
-include './pakettourmodule/sorting.php' ?>
+include './tiketmodule/getdata.php';
+include './tiketmodule/sorting.php' ?>
 <!-- Daftar Paket -->
 <div class="container border rounded py-5 px-5 bg-white mt-5 vh-100">
     <div class="row">
         <div class="col-lg-6">
-            <h5 class="font-weight-bold">Pilihan Paket Tour</h5>
+            <h4 class="font-weight-bold">Pilihan Tiket</h4>
         </div>
         <div class="col-lg-6 d-flex justify-content-end">
             <form action="" method="GET">
@@ -30,11 +30,11 @@ include './pakettourmodule/sorting.php' ?>
             </form>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
         <?php while ($data = mysqli_fetch_assoc($hasil)) { ?>
             <!-- Card -->
             <div class="col-md-3">
-                <a href="deskripsi-tour.php?id=<?php echo $data['id_tour'] ?>">
+                <a href="deskripsi-tiket.php?id=<?php echo $data['id_tiket'] ?>">
                     <div class="card mx-auto mb-3">
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $data['nama'] ?></h5>
