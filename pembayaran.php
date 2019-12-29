@@ -18,7 +18,7 @@ include './components/header.php';
                 </div>
                 <div class="col-md-8">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-8">
                             <form action="./pembayaranmodule/doPay.php" method="POST">
                                 <!-- Id -->
                                 <input type="hidden" name="id" value="<?php echo $get['id_checkout']; ?>">
@@ -29,12 +29,12 @@ include './components/header.php';
                                                                             } ?>">
                                 <!-- Tiket -->
                                 <div class="form-group row">
-                                    <label for="tiket" class="col-sm-3 col-form-label"><?php if ($get['id_tiket']) {
+                                    <label for="tiket" class="col-sm-5 col-form-label"><?php if ($get['id_tiket']) {
                                                                                             echo 'Tiket';
                                                                                         } else if ($get['id_tour']) {
                                                                                             echo 'Paket';
                                                                                         } ?></label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-7">
                                         <input type="text" name="item" class="form-control" value="<?php if ($get['id_tiket']) {
                                                                                                         echo $get['tiket'];
                                                                                                     } else if ($get['id_tour']) {
@@ -45,16 +45,16 @@ include './components/header.php';
 
                                 <!-- Jumlah -->
                                 <div class="form-group row">
-                                    <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
-                                    <div class="col-sm-9">
+                                    <label for="jumlah" class="col-sm-5 col-form-label">Jumlah</label>
+                                    <div class="col-sm-7">
                                         <input type="number" name="jumlah" min="1" max="10" class="form-control" id="jumlah" value="<?php echo $get['jumlah']; ?>">
                                     </div>
                                 </div>
 
                                 <!-- Harga -->
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Harga</label>
-                                    <div class="col-sm-9">
+                                    <label class="col-sm-5 col-form-label">Harga</label>
+                                    <div class="col-sm-7">
                                         <input type="text" name="harga" class="form-control" value="<?php if ($get['id_tiket']) {
                                                                                                         echo $get['harga_tiket'];
                                                                                                     } else if ($get['id_tour']) {
@@ -65,8 +65,8 @@ include './components/header.php';
 
                                 <!-- Total -->
                                 <div class="form-group row">
-                                    <label for="total" class="col-sm-3 col-form-label">Total</label>
-                                    <div class="col-sm-9">
+                                    <label for="total" class="col-sm-5 col-form-label">Total</label>
+                                    <div class="col-sm-7">
                                         <input type="text" class="form-control" name="total" id="total" value="Rp. <?php if ($get['id_tiket']) {
                                                                                                                         echo $get['harga_tiket'] * $get['jumlah'];
                                                                                                                     } else if ($get['id_tour']) {
@@ -78,8 +78,8 @@ include './components/header.php';
                                 <!-- Pembayaran -->
                                 <fieldset class="form-group">
                                     <div class="row">
-                                        <legend class="col-form-label col-sm-3 pt-0">Pembayaran</legend>
-                                        <div class="col-sm-9">
+                                        <legend class="col-form-label col-sm-5 pt-0">Pembayaran</legend>
+                                        <div class="col-sm-7">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="pembayaran" id="gopay" value="Gopay" checked>
                                                 <label class="form-check-label" for="gopay">
@@ -107,6 +107,14 @@ include './components/header.php';
                                         </div>
                                     </div>
                                 </fieldset>
+
+                                <!-- Promo -->
+                                <div class="form-group row">
+                                    <label for="promo" class="col-sm-5 col-form-label">Kode Promo</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="promo" id="total" value="<?php echo $_SESSION['kodepromo'] ?>">
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                         <hr>

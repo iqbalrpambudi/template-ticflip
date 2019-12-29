@@ -19,7 +19,7 @@
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg bg-white navbar-light">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light">
         <div class="container">
 
             <!-- Brand -->
