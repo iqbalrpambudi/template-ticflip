@@ -19,12 +19,12 @@
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light">
         <div class="container">
 
             <!-- Brand -->
             <a class="navbar-brand" href="homepage.php">
-                <h2 class="text-light">TicFlip</h2>
+                <h2 class="text-dark">TicFlip</h2>
             </a>
 
             <!-- Button -->
