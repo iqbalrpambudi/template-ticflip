@@ -102,6 +102,14 @@ $getUserProfile = mysqli_fetch_assoc($queryprofile);
                     <hr class="bg-secondary">
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link text-white" href="dftpenginapan.php"><i class="fa fa-bed mr-2" aria-hidden="true"></i>Daftar Penginapan</a>
+                    <hr class="bg-secondary">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="dftkendaraan.php"><i class="fa fa-car mr-2" aria-hidden="true"></i>Daftar Kendaraan</a>
+                    <hr class="bg-secondary">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-white" href="dftpromo.php"><i class="fas fa-percent mr-2"></i>Daftar Promo</a>
                     <hr class="bg-secondary">
                 </li>
