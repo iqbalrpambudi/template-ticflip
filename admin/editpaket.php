@@ -30,8 +30,8 @@ include '../components/header-admin.php';
   ?>
 
   <?php
-  $querypaket = mysqli_query($connect, "SELECT * fROM tb_tour WHERE id_tour='$id'");
-  $data = mysqli_fetch_assoc($querypaket);
+    $querypaket = mysqli_query($connect, "SELECT * fROM tb_tour WHERE id_tour='$id'");
+    $data = mysqli_fetch_assoc($querypaket);
   ?>
 
   <?php
@@ -42,7 +42,27 @@ include '../components/header-admin.php';
     $fas = $_POST['fasilitas'];
     $harga = $_POST['harga'];
 
-    $sql = mysqli_query($connect, "UPDATE tb_tour SET nama='$nama', deskripsi='$des', fasilitas='$fas', harga='$harga' WHERE id_tour='$id'") or die(mysqli_error($connect));
+    // ambil data file
+    $namaFile = $_FILES['file']['name'];
+    $namaSementara = $_FILES['file']['tmp_name'];
+
+    // lokasi file yang akan diupload
+    $dirUpload = "../assets/background/";
+
+    // Ambil nama gambar sebelumnya di database
+    $lastPicQuery = mysqli_query($connect, "SELECT foto FROM tb_tour WHERE id_tour='$id'");
+    $lastPic = mysqli_fetch_assoc($lastPicQuery);
+
+    // jika nama gambar ada di database maka hapus 
+    if ($lastPic['foto']) {
+      unlink($dirUpload . $lastPic['foto']);
+    }
+
+    // memindahkan file ke direktori server
+    $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
+
+    // update nama gambar ke database
+    $sql = mysqli_query($connect, "UPDATE tb_tour SET nama='$nama', deskripsi='$des', fasilitas='$fas', harga='$harga', foto='$namaFile' WHERE id_tour='$id'") or die(mysqli_error($connect));
 
     if ($sql) {
       echo '<script>alert("Berhasil menyimpan data."); document.location="editpaket.php?id_tour=' . $id . '";</script>';
@@ -52,7 +72,8 @@ include '../components/header-admin.php';
   }
   ?>
 
-  <form action="editpaket.php?id_tour=<?php echo $id; ?>" method="post">
+
+  <form action="editpaket.php?id_tour=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
 
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">NAMA TIKET</label>
@@ -76,6 +97,12 @@ include '../components/header-admin.php';
       <label class="col-sm-2 col-form-label">HARGA</label>
       <div class="col-sm-10">
         <input type="number" name="harga" class="form-control" required value="<?php echo $data['harga'] ?>">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">UPLOAD FOTO</label>
+      <div class="col-sm-10">
+        <input type="file" name="file" id="upload" class="form-control" required value="foto">
       </div>
     </div>
     <div class="form-group row">

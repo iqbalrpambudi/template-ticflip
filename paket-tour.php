@@ -38,7 +38,14 @@ include './pakettourmodule/sorting.php' ?>
                     <div class="card mx-auto mb-3">
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $data['nama'] ?></h5>
-                            <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">
+                            <div class="card">
+                            <?php if($data['foto']){?>
+                                <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
+                            <?php } else { ?>
+                                <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                <?php }; ?>
+                            </div>
+                       
                         </div>
                     </div>
                 </a>

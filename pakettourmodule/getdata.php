@@ -9,5 +9,8 @@ if (!$koneksi) {
     die('Tidak dapat tersambung dengan database');
 }
 
-$tourquery = mysqli_query($koneksi, "SELECT * from tb_tour GROUP BY nama");
+$querytour = mysqli_query($koneksi, "SELECT * from tb_tour");
+$tourquery = mysqli_query($koneksi, "SELECT * from tb_tour");
+
 $datatour = mysqli_fetch_assoc($tourquery);
+$tour = mysqli_fetch_assoc($querytour);
