@@ -29,9 +29,9 @@ $id = $_POST['id'];
 $getid = substr($id, 0, 2);
 // menjadikan $nilaikode ( int )
 if ($getid == 'TC') {
-    $insert = mysqli_query($conn, "INSERT INTO `tb_checkout` (`id_checkout`, `id_tiket`, `id_tour`, `username`, `jumlah`, `total`, `tanggal`, `status`) VALUES ('$id_otomatis', '$id', NULL, '$username', '$jumlah', '$total', '$tanggal', '0');");
+    $insert = mysqli_query($conn, "INSERT INTO `tb_checkout` (`id_checkout`, `id_tiket`, `id_tour`, `username`, `jumlah`, `total`, `tanggal`, `status`) VALUES ('$id_otomatis', '$id', NULL, '$username', '$jumlah', '$total', '$tanggal', 0);");
     header('location:./pembayaran.php');
 } else {
-    $insert = mysqli_query($conn, "INSERT INTO `tb_checkout` (`id_checkout`, `id_tiket`, `id_tour`, `username`, `jumlah`, `total`, `tanggal`, `status`) VALUES ('$id_otomatis', NULL,'$id', '$username', '$jumlah', '$total', '$tanggal', '0');");
+    $insert = mysqli_query($conn, "INSERT INTO `tb_checkout` (`id_checkout`, `id_tiket`, `id_tour`, `username`, `jumlah`, `total`, `tanggal`, `status`) VALUES ('$id_otomatis', NULL,'$id', '$username', '$jumlah', '$total', '$tanggal', 0);");
     header('location:./pembayaran.php');
 }

@@ -47,7 +47,7 @@ include './components/header.php';
                                 <div class="form-group row">
                                     <label for="jumlah" class="col-sm-5 col-form-label">Jumlah</label>
                                     <div class="col-sm-7">
-                                        <input type="number" name="jumlah" min="1" max="10" class="form-control" id="jumlah" value="<?php echo $get['jumlah']; ?>">
+                                        <input readonly type="number" name="jumlah" min="1" max="10" class="form-control" id="jumlah" value="<?php echo $get['jumlah']; ?>">
                                     </div>
                                 </div>
 
@@ -112,7 +112,18 @@ include './components/header.php';
                                 <div class="form-group row">
                                     <label for="promo" class="col-sm-5 col-form-label">Kode Promo</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="promo" id="total" value="<?php echo $_SESSION['kodepromo'] ?>">
+                                        <input type="text" class="form-control" name="promo" id="total" value="<?php if (isset($_SESSION['kodepromo'])) {
+                                                                                                                    echo $_SESSION['kodepromo'];
+                                                                                                                } else {
+                                                                                                                    echo '';
+                                                                                                                } ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label"></label>
+                                    <div class="col-sm-7">
+                                        <input type="checkbox" name="tukarpoin" id="total" value="5">
+                                        <small>Tukarkan 200 poin untuk diskon 5%</small>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -122,6 +133,7 @@ include './components/header.php';
                                         <button type="submit" name="hapus" class="btn btn-danger">Hapus</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>

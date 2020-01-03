@@ -55,7 +55,7 @@
                                 Welcome, <?php echo ucfirst($_SESSION['username']); ?><b class="caret"></b>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="../user.php">User Dashboard</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="./loginmodule/logout.php">Logout</a>

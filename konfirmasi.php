@@ -3,7 +3,6 @@ $conn = mysqli_connect('localhost', 'root', '', 'ticflip');
 $getData = mysqli_query($conn, "SELECT * from tb_pembayaran where status='belum lunas'");
 $query = mysqli_query($conn, "SELECT tb_pembayaran.*,tb_checkout.jumlah, tb_checkout.total FROM tb_pembayaran JOIN tb_checkout ON tb_pembayaran.id_checkout=tb_checkout.id_checkout WHERE tb_pembayaran.status='belum lunas' and konfirmasi=0");
 $data = mysqli_fetch_assoc($query);
-var_dump($data);
 include './components/header.php';
 ?>
 
