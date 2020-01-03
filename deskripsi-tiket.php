@@ -1,7 +1,7 @@
 <?php include './components/header.php';
 include './deskripsimodule/getdata.php' ?>
 
-<!-- Daftar Paket -->
+<!-- Daftar Paket --> 
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4 mb-3 border rounded p-4 bg-white mx-2">
@@ -13,7 +13,13 @@ include './deskripsimodule/getdata.php' ?>
                             echo $datatiket["nama"];
                             ?>
                         </h3>
-                        <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">
+                        <div class="card">
+                                <?php if (!$datatiket['foto']) { ?>
+                                    <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                <?php } else { ?>
+                                <img src="./assets/background/<?php echo $datatiket['foto']; ?>" class="card-img-top " alt="...">
+                                <?php }; ?>
+                            </div>
                     </div>
                 </div>
             </a>

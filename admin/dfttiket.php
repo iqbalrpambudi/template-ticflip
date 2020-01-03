@@ -18,6 +18,7 @@ include '../components/header-admin.php';
         <th scope="col">NAMA TIKET</th>
         <th scope="col">DESKRIPSI</th>
         <th scope="col">HARGA</th>
+        <th scope="col">FOTO</th>
         <th colspan="3" scope="col">AKSI</th>
       </tr>
     </thead>
@@ -39,6 +40,7 @@ include '../components/header-admin.php';
                           <td>' . $data['nama'] . '</td>
                           <td>' . $data['deskripsi'] . '</td>
                           <td>' . $data['harga'] . '</td>
+                          <td>' . $data['foto'] . '</td>
                           <td>
                             <a href="edittiket.php?id_tiket=' . $data['id_tiket'] . '" class="badge badge-warning">Edit</a>
                             <a href="deletetiket.php?id_tiket=' . $data['id_tiket'] . '" class="badge badge-danger" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Delete</a>

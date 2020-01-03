@@ -1,7 +1,7 @@
 <?php
 include './components/header.php';
 include './pakettourmodule/getdata.php';
-include './pakettourmodule/sorting.php' ?>
+include './pakettourmodule/sorting.php' ?> 
 <!-- Daftar Paket -->
 <div class="container border rounded py-5 px-5 bg-white mt-5 vh-100">
     <div class="row">
