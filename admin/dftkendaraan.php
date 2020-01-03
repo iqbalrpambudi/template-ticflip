@@ -6,27 +6,25 @@ include '../components/header-admin.php';
 ?>
 
 <div class="col-md-10 p-5 pt-2">
-  <h3><i class="fas fa-box mr-2"></i> DAFTAR PAKET TOUR</h3>
+  <h3><i class="fa fa-car mr-2" aria-hidden="true"></i> DAFTAR KENDARAAN</h3>
   <hr>
 
-  <a href="tambahpaket.php" name="submit" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>TAMBAH DATA PAKET TOUR</a>
+  <a href="tambahkendaraan.php" name="submit" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>TAMBAH DATA KENDARAAN</a>
   <table class="table table-striped table-bordered">
     <thead>
       <tr class="text-center">
         <th scope="col">NO</th>
-        <th scope="col">ID TOUR</th>
-        <th scope="col">NAMA PAKET TOUR</th>
-        <th scope="col">DESKRIPSI</th>
-        <th scope="col">FASILITAS</th>
-        <th scope="col">HARGA</th>
-        <th scope="col">FOTO</th>
+        <th scope="col">ID KENDARAAN</th>
+        <th scope="col">NAMA KENDARAAN</th>
+        <th scope="col">TIPE</th>
+        <th scope="col">STATUS</th>
         <th colspan="3" scope="col">AKSI</th>
       </tr>
     </thead>
     <tbody>
       <?php
       //query ke database SELECT tabel user urut berdasarkan id yang paling besar
-      $query = mysqli_query($connect, "SELECT * FROM tb_tour ORDER BY id_tour ASC") or die(mysqli_error($connect));
+      $query = mysqli_query($connect, "SELECT * FROM tb_kendaraan ORDER BY id_kendaraan ASC") or die(mysqli_error($connect));
       //jika query diatas menghasilkan nilai > 0 maka menjalankan script di bawah if...
       if (mysqli_num_rows($query) > 0) {
         //membuat variabel $no untuk menyimpan nomor urut
@@ -37,15 +35,13 @@ include '../components/header-admin.php';
           echo '
                         <tr>
                           <td>' . $no . '</td>
-                          <td>' . $data['id_tour'] . '</td>
+                          <td>' . $data['id_kendaraan'] . '</td>
                           <td>' . $data['nama'] . '</td>
-                          <td>' . $data['deskripsi'] . '</td>
-                          <td>' . $data['fasilitas'] . '</td>
-                          <td>' . $data['harga'] . '</td>
-                          <td>' . $data['foto'] . '</td>
+                          <td>' . $data['tipe'] . '</td>
+                          <td>' . $data['status'] . '</td>
                           <td>
-                            <a href="editpaket.php?id_tour=' . $data['id_tour'] . '" class="badge badge-warning">Edit</a>
-                            <a href="deletepaket.php?id_tour=' . $data['id_tour'] . '" class="badge badge-danger" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Delete</a>
+                            <a href="editkendaraan.php?id_kendaraan=' . $data['id_kendaraan'] . '" class="badge badge-warning">Edit</a>
+                            <a href="deletekendaraan.php?id_kendaraan=' . $data['id_kendaraan'] . '" class="badge badge-danger" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Delete</a>
                           </td>
                         </tr>
                         ';

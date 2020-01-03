@@ -17,7 +17,7 @@ include '../components/header-admin.php';
 				<h5 class="card-title">JUMLAH USER</h5>
 				<div class="display-4"><?php $number = mysqli_num_rows($queryuser);
 										echo $number; ?></div>
-				<a href="/admin/dftuser.php">
+				<a href="dftuser.php">
 					<p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p>
 				</a>
 			</div>
@@ -31,7 +31,7 @@ include '../components/header-admin.php';
 				<h5 class="card-title">JUMLAH CHECKOUT</h5>
 				<div class="display-4"><?php $number = mysqli_num_rows($querycheckout);
 										echo $number; ?></div>
-				<a href="/admin/dftcheckout.php">
+				<a href="dftcheckout.php">
 					<p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p>
 				</a>
 			</div>
@@ -45,7 +45,7 @@ include '../components/header-admin.php';
 				<h5 class="card-title">JUMLAH PEMBAYARAN</h5>
 				<div class="display-4"><?php $number = mysqli_num_rows($querypembayaran);
 										echo $number; ?></div>
-				<a href="/admin/dftpembayaran.php">
+				<a href="dftpembayaran.php">
 					<p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p>
 				</a>
 			</div>

@@ -6,17 +6,17 @@ include '../components/header-admin.php';
 ?>
 
 <div class="col-md-10 p-5 pt-2">
-  <h3><i class="fas fa-box mr-2"></i> EDIT PAKET</h3>
+  <h3><i class="fa fa-bed mr-2" aria-hidden="true"></i> EDIT PENGINAPAN</h3>
   <hr>
-  <a href="dftpaket.php" class="btn btn-primary mb-3"><i class="fas fa-angle-double-left"></i> KEMBALI</a>
+  <a href="dftpenginapan.php" class="btn btn-primary mb-3"><i class="fas fa-angle-double-left"></i> KEMBALI</a>
 
   <?php
   //jika sudah mendapatkan parameter GET id dari URL
-  if (isset($_GET['id_tour'])) {
+  if (isset($_GET['id_penginapan'])) {
     //membuat variabel $user untuk menyimpan user dari GET user di URL
-    $id = $_GET['id_tour'];
+    $id = $_GET['id_penginapan'];
     //query ke database SELECT tabel tiket berdasarkan username=$user
-    $select = mysqli_query($connect, "SELECT * FROM tb_tour WHERE id_tour='$id'") or die(mysqli_error($connect));
+    $select = mysqli_query($connect, "SELECT * FROM tb_penginapan WHERE id_penginapan='$id'") or die(mysqli_error($connect));
     //jika hasil query = 0 maka muncul pesan error
     if (mysqli_num_rows($select) == 0) {
       echo '<div class="alert alert-warning">ID tidak ada dalam database.</div>';
@@ -30,8 +30,8 @@ include '../components/header-admin.php';
   ?>
 
   <?php
-    $querypaket = mysqli_query($connect, "SELECT * fROM tb_tour WHERE id_tour='$id'");
-    $data = mysqli_fetch_assoc($querypaket);
+  $querypenginapan = mysqli_query($connect, "SELECT * fROM tb_penginapan WHERE id_penginapan='$id'");
+  $data = mysqli_fetch_assoc($querypenginapan);
   ?>
 
   <?php
@@ -39,44 +39,24 @@ include '../components/header-admin.php';
   if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $des = $_POST['deskripsi'];
-    $fas = $_POST['fasilitas'];
     $harga = $_POST['harga'];
+    $status = $_POST['status'];
 
-    // ambil data file
-    $namaFile = $_FILES['file']['name'];
-    $namaSementara = $_FILES['file']['tmp_name'];
 
-    // lokasi file yang akan diupload
-    $dirUpload = "../assets/background/";
-
-    // Ambil nama gambar sebelumnya di database
-    $lastPicQuery = mysqli_query($connect, "SELECT foto FROM tb_tour WHERE id_tour='$id'");
-    $lastPic = mysqli_fetch_assoc($lastPicQuery);
-
-    // jika nama gambar ada di database maka hapus 
-    if ($lastPic['foto']) {
-      unlink($dirUpload . $lastPic['foto']);
-    }
-
-    // memindahkan file ke direktori server
-    $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
-
-    // update nama gambar ke database
-    $sql = mysqli_query($connect, "UPDATE tb_tour SET nama='$nama', deskripsi='$des', fasilitas='$fas', harga='$harga', foto='$namaFile' WHERE id_tour='$id'") or die(mysqli_error($connect));
+    $sql = mysqli_query($connect, "UPDATE tb_penginapan SET nama='$nama', deskripsi='$des', harga='$harga', status='$status' WHERE id_penginapan='$id'") or die(mysqli_error($connect));
 
     if ($sql) {
-      echo '<script>alert("Berhasil menyimpan data."); document.location="editpaket.php?id_tour=' . $id . '";</script>';
+      echo '<script>alert("Berhasil menyimpan data."); document.location="editpenginapan.php?id_penginapan=' . $id . '";</script>';
     } else {
       echo '<div class="alert alert-warning">Gagal melakukan proses edit data.</div>';
     }
   }
   ?>
 
-
-  <form action="editpaket.php?id_tour=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
+  <form action="editpenginapan.php?id_penginapan=<?php echo $id; ?>" method="post">
 
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">NAMA TIKET</label>
+      <label class="col-sm-2 col-form-label">NAMA PENGINAPAN</label>
       <div class="col-sm-10">
         <input type="text" name="nama" class="form-control" size="4" required value="<?php echo $data['nama'] ?>">
       </div>
@@ -88,21 +68,15 @@ include '../components/header-admin.php';
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">FASILITAS</label>
-      <div class="col-sm-10">
-        <input type="text" name="fasilitas" class="form-control" required value="<?php echo $data['fasilitas'] ?>">
-      </div>
-    </div>
-    <div class="form-group row">
       <label class="col-sm-2 col-form-label">HARGA</label>
       <div class="col-sm-10">
         <input type="number" name="harga" class="form-control" required value="<?php echo $data['harga'] ?>">
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">UPLOAD FOTO</label>
+      <label class="col-sm-2 col-form-label">STATUS</label>
       <div class="col-sm-10">
-        <input type="file" name="file" id="upload" class="form-control" required value="foto">
+        <input type="text" name="status" class="form-control" required value="<?php echo $data['status'] ?>">
       </div>
     </div>
     <div class="form-group row">

@@ -15,7 +15,13 @@
                                 echo $datatour["nama"];
                                 ?>
                             </h3>
-                            <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">
+                            <div class="card">
+                                <?php if (!$datatour['foto']) { ?>
+                                    <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                <?php } else { ?>
+                                <img src="./assets/background/<?php echo $datatour['foto']; ?>" class="card-img-top " alt="...">
+                                <?php }; ?>
+                            </div>        
                         </div>
                     </div>
                 </a>

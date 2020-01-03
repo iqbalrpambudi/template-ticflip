@@ -144,7 +144,7 @@ include './components/header.php';
         <div class="container bg-light rounded p-5">
             <h1 class="display-4 font-weight-light">Tidak ada pembayaran</h1>
             <p class="lead">Pesanan kosong, yuk pesan sekarang disini</p>
-            <a href="/homepage.php" class="btn btn-primary">Pesan</a>
+            <a href="homepage.php" class="btn btn-primary">Pesan</a>
         </div>
     <?php } ?>
 </div>

@@ -8,7 +8,7 @@ $alamat = $_POST['alamat'];
 // ambil data file
 $namaFile = $_FILES['file']['name'];
 $namaSementara = $_FILES['file']['tmp_name'];
-$username = $_POST['username'];
+$username = $_POST['username']; 
 
 // lokasi file yang akan diupload
 $dirUpload = "../assets/profile/";

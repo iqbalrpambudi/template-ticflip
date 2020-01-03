@@ -1,13 +1,16 @@
 <?php
 session_start();
 include("./loginmodule/koneksi.php");
-if (isset($_SESSION['username'])) {
-	if ($_SESSION['username']) {
-		header('location:./user.php');
+if(isset($_SESSION["role"])){
+		if($_SESSION['role']=="admin"){
+			header("location:./admin/admin.php");
+		}else if($_SESSION['role']=="user"){
+			header("location:./user.php");
+		}else{
+			header("location:login.php");
+		}
 	}
-}
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,7 +25,7 @@ if (isset($_SESSION['username'])) {
 	<style type="text/css">
 		body {
 			color: #fff;
-			background-image: url('../assets/hero.jpg');
+			background-image: url('./assets/hero.jpg');
 			background-position: center;
 			background-repeat: no-repeat;
 		}
