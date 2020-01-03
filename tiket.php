@@ -35,7 +35,7 @@ include './tiketmodule/sorting.php' ?>
             <!-- Card -->
             <div class="col-md-3">
                 <a href="deskripsi-tiket.php?id=<?php echo $data['id_tiket'] ?>">
-                    <div class="card mx-auto mb-3">
+                    <div class="card mx-auto mb-3" style="max-height:150px">
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $data['nama'] ?></h5>
                             <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">

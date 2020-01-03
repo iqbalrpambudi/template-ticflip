@@ -35,17 +35,17 @@ include './pakettourmodule/sorting.php' ?>
             <!-- Card -->
             <div class="col-md-3">
                 <a href="deskripsi-tour.php?id=<?php echo $data['id_tour'] ?>">
-                    <div class="card mx-auto mb-3">
+                    <div class="card mx-auto mb-3" style="max-height:150px">
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $data['nama'] ?></h5>
                             <div class="card">
-                            <?php if($data['foto']){?>
-                                <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
-                            <?php } else { ?>
-                                <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                <?php if ($data['foto']) { ?>
+                                    <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
+                                <?php } else { ?>
+                                    <img src="./assets/bali.jpg" class="card-img-top " alt="...">
                                 <?php }; ?>
                             </div>
-                       
+
                         </div>
                     </div>
                 </a>
