@@ -33,6 +33,6 @@ if (isset($_POST['submit'])) {
 } elseif (isset($_POST['hapus'])) {
     $id = $_POST['id'];
     $username = $_SESSION['username'];
-    mysqli_query($conn, "DELETE FROM `tb_checkout` WHERE `tb_checkout`.`id_checkout` = 'OR004'");
+    mysqli_query($conn, "DELETE FROM `tb_checkout` WHERE `tb_checkout`.`id_checkout` = '$id'");
     header('location:../user.php');
 }

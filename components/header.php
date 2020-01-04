@@ -19,12 +19,11 @@
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg bg-light navbar-light">
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
         <div class="container">
-
             <!-- Brand -->
             <a class="navbar-brand" href="homepage.php">
-                <h2 class="text-dark">TicFlip</h2>
+                <h2 class="text-light">TicFlip</h2>
             </a>
 
             <!-- Button -->
@@ -37,29 +36,37 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage.php"><i class="fa fa-home mr-2"></i>Home</a>
+                        <a class="nav-link text-white" href="homepage.php"><i class="fa fa-home mr-2"></i>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="paket-tour.php"><i class="fas fa-box mr-2"></i>Paket
+                        <a class="nav-link text-white" href="paket-tour.php"><i class="fas fa-box mr-2"></i>Paket
                             Tour</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tiket.php"><i class="fas fa-ticket-alt mr-2"></i>Tiket</a>
+                        <a class="nav-link text-white" href="tiket.php"><i class="fas fa-ticket-alt mr-2"></i>Tiket</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ml-5">
                     <?php session_start();
                     if (isset($_SESSION['username'])) { ?>
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                            <a href="#" class="nav-link dropdown-toggle text-white" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                 Welcome, <?php echo ucfirst($_SESSION['username']); ?><b class="caret"></b>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="../user.php">User Dashboard</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-coins mr-2 text-warning"></i><?php
+                                                                                                                $username = $_SESSION['username'];
+                                                                                                                $conn = mysqli_connect('localhost', 'root', '', 'ticflip');
+                                                                                                                $getData = mysqli_query($conn, "SELECT poin from tb_user where username='$username'");
+                                                                                                                $getpoin = mysqli_fetch_assoc($getData);
+                                                                                                                echo $getpoin['poin']; ?> Poin</a>
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../user.php">User Dashboard</a>
                                 <a class="dropdown-item" href="./loginmodule/logout.php">Logout</a>
                             </div>
+                        </li>
+                        <li class="nav-item">
+
                         </li>
                         <!--  -->
                     <?php } else { ?>
