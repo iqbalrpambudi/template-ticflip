@@ -2,7 +2,7 @@
 include './components/header.php';
 include './tiketmodule/getdata.php';
 include './tiketmodule/sorting.php' ?>
-<!-- Daftar Paket -->
+<!-- Daftar Paket --> 
 <div class="container border rounded py-5 px-5 bg-white mt-5 vh-100">
     <div class="row">
         <div class="col-lg-6">
@@ -38,7 +38,13 @@ include './tiketmodule/sorting.php' ?>
                     <div class="card mx-auto mb-3">
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $data['nama'] ?></h5>
-                            <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">
+                            <div class="card">
+                            <?php if($data['foto']){?>
+                                <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
+                            <?php } else { ?>
+                                <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                <?php }; ?>
+                            </div>
                         </div>
                     </div>
                 </a>

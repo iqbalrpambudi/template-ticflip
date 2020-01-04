@@ -3,7 +3,7 @@
     include './deskripsimodule/getdata.php';
     ?>
 
-    <!-- Daftar Paket -->
+    <!-- Daftar Paket --> 
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4 mb-3 border rounded p-4 bg-white mx-2">
