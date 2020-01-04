@@ -2,8 +2,15 @@
 include './components/header.php';
 include './tiketmodule/getdata.php';
 include './tiketmodule/sorting.php' ?>
-<!-- Daftar Paket --> 
-<div class="container border rounded py-5 px-5 bg-white mt-5 vh-100">
+<!-- Daftar Paket -->
+
+<div class="jumbotron-fluid" style="background-image: url('./assets/ticket.jpg');
+background-position: center;
+background-size: cover;
+height: 300px;">
+</div>
+
+<div class="container border rounded py-5 px-5 bg-white vh-100" style="margin-top: -100px">
     <div class="row">
         <div class="col-lg-6">
             <h4 class="font-weight-bold">Pilihan Tiket</h4>
@@ -39,10 +46,10 @@ include './tiketmodule/sorting.php' ?>
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $data['nama'] ?></h5>
                             <div class="card">
-                            <?php if($data['foto']){?>
-                                <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
-                            <?php } else { ?>
-                                <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                <?php if ($data['foto']) { ?>
+                                    <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
+                                <?php } else { ?>
+                                    <img src="./assets/bali.jpg" class="card-img-top " alt="...">
                                 <?php }; ?>
                             </div>
                         </div>

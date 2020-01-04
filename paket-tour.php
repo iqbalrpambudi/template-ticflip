@@ -1,9 +1,14 @@
 <?php
 include './components/header.php';
 include './pakettourmodule/getdata.php';
-include './pakettourmodule/sorting.php' ?> 
+include './pakettourmodule/sorting.php' ?>
 <!-- Daftar Paket -->
-<div class="container border rounded py-5 px-5 bg-white mt-5 vh-100">
+<div class="jumbotron-flui" style="background-image: url('./assets/tour.jpg');
+background-position: center;
+background-size: cover;
+height: 300px">
+</div>
+<div class="container border rounded py-5 px-5 bg-white vh-100" style="margin-top: -100px">
     <div class="row">
         <div class="col-lg-6">
             <h5 class="font-weight-bold">Pilihan Paket Tour</h5>
