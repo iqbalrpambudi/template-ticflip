@@ -10,7 +10,7 @@ include '../components/header-admin.php';
   <hr>
   <a href="dfttiket.php" class="btn btn-primary mb-3"><i class="fas fa-angle-double-left"></i> KEMBALI</a>
 
-  <?php
+  <?php  
   //jika sudah mendapatkan parameter GET id dari URL
   if (isset($_GET['id_tiket'])) {
     //membuat variabel $user untuk menyimpan user dari GET user di URL
@@ -41,7 +41,26 @@ include '../components/header-admin.php';
     $des = $_POST['deskripsi'];
     $harga = $_POST['harga'];
 
-    $sql = mysqli_query($connect, "UPDATE tb_tiket SET nama='$nama', deskripsi='$des', harga='$harga' WHERE id_tiket='$id'") or die(mysqli_error($connect));
+        // ambil data file
+    $namaFile = $_FILES['file']['name'];
+    $namaSementara = $_FILES['file']['tmp_name'];
+
+    // lokasi file yang akan diupload
+    $dirUpload = "../assets/background/";
+
+    // Ambil nama gambar sebelumnya di database
+    $lastPicQuery = mysqli_query($connect, "SELECT foto FROM tb_tiket WHERE id_tiket='$id'");
+    $lastPic = mysqli_fetch_assoc($lastPicQuery);
+
+    // jika nama gambar ada di database maka hapus 
+    if ($lastPic['foto']) {
+      unlink($dirUpload . $lastPic['foto']);
+    }
+
+    // memindahkan file ke direktori server
+    $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
+
+    $sql = mysqli_query($connect, "UPDATE tb_tiket SET nama='$nama', deskripsi='$des', harga='$harga', foto='$namaFile' WHERE id_tiket='$id'") or die(mysqli_error($connect));
 
     if ($sql) {
       echo '<script>alert("Berhasil menyimpan data."); document.location="edittiket.php?id_tiket=' . $id . '";</script>';
@@ -53,7 +72,7 @@ include '../components/header-admin.php';
 
 
 
-  <form action="edittiket.php?id_tiket=<?php echo $id; ?>" method="post">
+  <form action="edittiket.php?id_tiket=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
 
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">NAMA TIKET</label>
@@ -71,6 +90,12 @@ include '../components/header-admin.php';
       <label class="col-sm-2 col-form-label">HARGA</label>
       <div class="col-sm-10">
         <input type="number" name="harga" class="form-control" required value="<?php echo $data['harga'] ?>">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">UPLOAD FOTO</label>
+      <div class="col-sm-10">
+        <input type="file" name="file" id="upload" class="form-control" required value="foto">
       </div>
     </div>
     <div class="form-group row">
