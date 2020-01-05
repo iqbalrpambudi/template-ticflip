@@ -1,7 +1,10 @@
 <?php
+session_start();
+$username = $_SESSION['username'];
+session_abort();
 $conn = mysqli_connect('localhost', 'root', '', 'ticflip');
 $getData = mysqli_query($conn, "SELECT * from tb_pembayaran where status='belum lunas'");
-$query = mysqli_query($conn, "SELECT tb_pembayaran.*,tb_checkout.jumlah, tb_checkout.total FROM tb_pembayaran JOIN tb_checkout ON tb_pembayaran.id_checkout=tb_checkout.id_checkout WHERE tb_pembayaran.status='belum lunas' and konfirmasi=0");
+$query = mysqli_query($conn, "SELECT tb_pembayaran.*,tb_checkout.jumlah, tb_checkout.total FROM tb_pembayaran JOIN tb_checkout ON tb_pembayaran.id_checkout=tb_checkout.id_checkout WHERE tb_pembayaran.status='belum lunas' and konfirmasi=0 and tb_pembayaran.username='$username'");
 $data = mysqli_fetch_assoc($query);
 include './components/header.php';
 ?>
@@ -77,29 +80,26 @@ include './components/header.php';
             </thead>
         </table>
 
-        <table class=" table">
-            <thead>
-                <tr>
-                    <th>
-                        <div class="col-md 8">
-                            <h6><strong>INFO : </strong></h6>
-                        </div>
-                        <ul>
-                            <li>Form ini diisi setelah anda melakukan Pembayaran.</li>
-                            <li>Issued Ticket tanpa melakukan transfer terlebih dahulu tidak bisa diproses.</li>
-                            <li>Konfirmasi pembayaran minimal 1 jam sebelum Batas Waktu Pembayaran.</li>
-                            <li>Konfirmasi Pembayaran yang anda kirimkan akan kamu anggap BENAR dan TIKET akan kami ISSUED.</li>
+        <table class="table">
+            <tr>
+                <div class="col-md 8">
+                    <h6>INFO :</h6>
+                </div>
+                <ul>
+                    <li>Form ini diisi setelah anda melakukan Pembayaran.</li>
+                    <li>Issued Ticket tanpa melakukan transfer terlebih dahulu tidak bisa diproses.</li>
+                    <li>Konfirmasi pembayaran minimal 1 jam sebelum Batas Waktu Pembayaran.</li>
+                    <li>Konfirmasi Pembayaran yang anda kirimkan akan kamu anggap BENAR dan TIKET akan kami ISSUED.</li>
 
-                        </ul>
-                        <p class="col-md 8">
-                            <input type="checkbox" name="konfirmasi" value="konfirmasi"> Apakah Tiket yang anda bayar sudah sesuai pesanan?
-                            Jika anda klik "Kirim Konfirmasi Pembayaran" kesalahan pada Pesanan setelah proses Issued bukan tangung jawab kami.
-                        </p>
-                </tr>
-            </thead>
+                </ul>
+                <p class="col-md 8">
+                    <input required type="checkbox" name="konfirmasi" value="konfirmasi"> Apakah Tiket yang anda bayar sudah sesuai pesanan?
+                    Jika anda klik "Kirim Konfirmasi Pembayaran" kesalahan pada Pesanan setelah proses Issued bukan tangung jawab kami.
+                </p>
+            </tr>
         </table>
     </div>
-    <form method="POST" action="/usermodule/doConfirm.php">
+    <form method="POST" action="./usermodule/doConfirm.php">
         <input type="hidden" name="id" value="<?php echo $data['id_pembayaran'] ?>">
         <div class="container text-right">
             <button type="submit" name="submit" class="btn btn-success">Konfirmasi Pembayaran</button>

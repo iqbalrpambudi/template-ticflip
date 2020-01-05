@@ -15,6 +15,11 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/style/style.css">
+
+    <!-- Jquery -->
+    <script src="./assets/jquery/jquery.min.js"></script>
+    <script src="./assets/popper/popper.min.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.min.js"> </script>
     <title>Deskripsi</title>
 </head>
 

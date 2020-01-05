@@ -58,7 +58,7 @@ include '../components/header-admin.php';
     $cek = mysqli_query($connect, "SELECT * FROM tb_tiket WHERE id_tiket='$id'") or die(mysqli_error($connect));
 
     if (mysqli_num_rows($cek) == 0) {
-      $sql = mysqli_query($connect, "INSERT INTO tb_tiket (id_tiket, nama, deskripsi, harga) VALUES('$id','$nama', '$des', '$harga')") or die(mysqli_error($connect));
+      $sql = mysqli_query($connect, "INSERT INTO tb_tiket (id_tiket, nama, deskripsi, harga, foto) VALUES('$id','$nama', '$des', '$harga', '$namaFile')") or die(mysqli_error($connect));
 
       if ($sql) {
         echo '<script>alert("Berhasil menambahkan data."); document.location="tambahtiket.php";</script>';

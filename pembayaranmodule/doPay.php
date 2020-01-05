@@ -72,5 +72,6 @@ if (isset($_POST['submit'])) {
     $id = $_POST['id'];
     $username = $_SESSION['username'];
     mysqli_query($conn, "DELETE FROM `tb_checkout` WHERE `tb_checkout`.`id_checkout` = '$id'");
+    $_SESSION['info'] = 'Pesanan Telah Dihapus';
     header('location:../pembayaran.php');
 }

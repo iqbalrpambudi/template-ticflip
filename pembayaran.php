@@ -4,12 +4,33 @@ include './pembayaranmodule/getdata.php';
 include './components/header.php';
 ?>
 
+<?php session_start();
+if (isset($_SESSION['info'])) { ?>
+    <!-- Toast -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" style="position: absolute; bottom: 1rem; right: 1rem;">
+        <div class="toast-header bg-danger">
 
+            <strong class="mr-auto text-white">Notification</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Pesanan Telah Dihapus
+        </div>
+    </div>
+    <script>
+        $('.toast').toast('show');
+    </script>
+<?php };
+unset($_SESSION['info']); ?>
 <!-- Item Checkout -->
-<div class="container border vh-min-100 min-vh-100 rounded p-5 bg-white mt-5">
-    <h3 class="font-weight-bold">Pembayaran</h3>
+<div class="container border vh-min-100 min-vh-100 rounded p-4 bg-white mt-5">
     <?php if ($get != null) { ?>
         <div class="card">
+            <div class="card-header bg-info">
+                <h3 class="text-white">Pembayaran</h3>
+            </div>
             <div class="row ">
                 <div class="col-md-4">
                     <?php if ($get['id_tiket']) {
@@ -67,7 +88,7 @@ include './components/header.php';
                                 <label class="col-sm-5 col-form-label">Harga</label>
                                 <div class="col-sm-7 font-weight-bold">: Rp.
                                     <?php if ($get['id_tiket']) {
-                                        echo number_format($get['harga_tiket'], 2, ',', '.');
+                                        echo number_format($get['harga_tiket'], 0, ',', '.');
                                     } else if ($get['id_tour']) {
                                         echo number_format($get['harga_tour'], 0, ',', '.');
                                     } ?>
@@ -148,22 +169,6 @@ include './components/header.php';
 
             </div>
         </div>
-</div>
-<div class="container p-3 my-2 bg-white">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mx-auto">
-
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="form-row">
-                <div class="form-group col-md-8">
-
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <?php } else { ?>
     <div class="container bg-light rounded p-5">
