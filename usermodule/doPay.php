@@ -11,6 +11,13 @@ if (isset($_POST['submit'])) {
     $id_item = $_POST['id_item'];
     $username = $_SESSION['username'];
 
+    if ($_POST['penginapan'] != '') {
+        $penginapan = $_POST['penginapan'];
+    }
+    if ($_POST['kendaraan'] != '') {
+        $kendaraan = $_POST['kendaraan'];
+    }
+
     // Generate New Id
     $getlastid = mysqli_query($conn, 'SELECT max(id_pembayaran) as id from tb_pembayaran');
     $lastid = mysqli_fetch_assoc($getlastid);

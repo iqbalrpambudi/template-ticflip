@@ -3,7 +3,7 @@
     include './deskripsimodule/getdata.php';
     ?>
 
-    <!-- Daftar Paket --> 
+    <!-- Daftar Paket -->
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4 mb-3 border rounded p-4 bg-white mx-2">
@@ -19,9 +19,9 @@
                                 <?php if (!$datatour['foto']) { ?>
                                     <img src="./assets/bali.jpg" class="card-img-top " alt="...">
                                 <?php } else { ?>
-                                <img src="./assets/background/<?php echo $datatour['foto']; ?>" class="card-img-top " alt="...">
+                                    <img src="./assets/background/<?php echo $datatour['foto']; ?>" class="card-img-top " alt="...">
                                 <?php }; ?>
-                            </div>        
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -70,15 +70,15 @@
                                 <h5 class="mt-4">Jumlah Orang</h5>
                                 <input type="number" min="10" max="50" required name="jumlah" id="jumlah" class="form-control">
                                 <h5 class="mt-4">Penginapan</h5>
-                                <select id="inputState" name='penginapan' class="form-control">
-                                    <option value="0" selected>Choose...</option>
+                                <select required id="inputState" name='penginapan' class="form-control">
+                                    <option value="0" selected>Pilih kendaraan</option>
                                     <?php foreach ($penginapanquery as $penginapan) : ?>
                                         <option value="<?php echo $penginapan['id_penginapan'] ?>"><?php echo $penginapan['nama'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                                 <h5 class="mt-4">Bus</h5>
-                                <select id="inputState" name='kendaraan' class="form-control">
-                                    <option value="0" selected>Tanpa Bus</option>
+                                <select required id="inputState" name='kendaraan' class="form-control">
+                                    <option value="0" selected>Pilih Penginapan</option>
                                     <?php foreach ($busquery as $bus) : ?>
                                         <option value="<?php echo $bus['id_kendaraan'] ?>"><?php echo $bus['nama'] ?></option>
                                     <?php endforeach ?>

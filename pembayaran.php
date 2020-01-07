@@ -65,6 +65,16 @@ unset($_SESSION['info']); ?>
                                                                             } else if ($get['id_tour']) {
                                                                                 echo $get['harga_tour'] * $get['jumlah'];
                                                                             } ?>" readonly>
+                            <input type="hidden" name="penginapan" value="<?php if ($get['id_tiket']) {
+                                                                                echo '';
+                                                                            } else if ($get['id_tour']) {
+                                                                                echo $get['penginapan'];
+                                                                            } ?>" readonly>
+                            <input type="hidden" name="kendaraan" value="<?php if ($get['id_tiket']) {
+                                                                                echo '';
+                                                                            } else if ($get['id_tour']) {
+                                                                                echo $get['kendaraan'];
+                                                                            } ?>" readonly>
                             <input type="hidden" name="jumlah" min="1" max="10" class="form-control" id="jumlah" value="<?php echo $get['jumlah']; ?>" readonly>
 
                             <!-- Tiket/Tour Display -->
@@ -116,6 +126,33 @@ unset($_SESSION['info']); ?>
                                 </div>
                             </div>
 
+                            <!-- Penginapan -->
+                            <?php if ($get['penginapan'] != '') { ?>
+                                <div class="form-group row">
+                                    <label for="penginapan" class="col-sm-5 col-form-label">Penginapan</label>
+                                    <div class="col-sm-7 font-weight-bold">:
+                                        <?php if ($get['id_tiket']) {
+                                            echo '-';
+                                        } else if ($get['id_tour']) {
+                                            echo $get['penginapan'];
+                                        } ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
+
+                            <!-- Kendaraan -->
+                            <?php if ($get['kendaraan'] != '') { ?>
+                                <div class="form-group row">
+                                    <label for="kendaraan" class="col-sm-5 col-form-label">Kendaraan</label>
+                                    <div class="col-sm-7 font-weight-bold">:
+                                        <?php if ($get['id_tiket']) {
+                                            echo '-';
+                                        } else if ($get['id_tour']) {
+                                            echo $get['kendaraan'];
+                                        } ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
 
                             <!-- Pembayaran Display -->
                             <fieldset class="form-group">

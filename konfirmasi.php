@@ -4,7 +4,7 @@ $username = $_SESSION['username'];
 session_abort();
 $conn = mysqli_connect('localhost', 'root', '', 'ticflip');
 $getData = mysqli_query($conn, "SELECT * from tb_pembayaran where status='belum lunas'");
-$query = mysqli_query($conn, "SELECT tb_pembayaran.*,tb_checkout.jumlah, tb_checkout.total FROM tb_pembayaran JOIN tb_checkout ON tb_pembayaran.id_checkout=tb_checkout.id_checkout WHERE tb_pembayaran.status='belum lunas' and konfirmasi=0 and tb_pembayaran.username='$username'");
+$query = mysqli_query($conn, "SELECT tb_pembayaran.*,tb_checkout.jumlah, tb_checkout.total,tb_checkout.penginapan,tb_checkout.kendaraan FROM tb_pembayaran JOIN tb_checkout ON tb_pembayaran.id_checkout=tb_checkout.id_checkout WHERE tb_pembayaran.status='belum lunas' and konfirmasi=0 and tb_pembayaran.username='$username'");
 $data = mysqli_fetch_assoc($query);
 include './components/header.php';
 ?>
@@ -33,14 +33,26 @@ include './components/header.php';
                     <th>Paket</th>
                     <th><?php echo $data['item'] ?></th>
                 </tr>
+                <?php if ($data['penginapan'] != '') { ?>
+                    <tr>
+                        <th>Penginapan</th>
+                        <th><?php echo $data['penginapan'] ?></th>
+                    </tr>
+                <?php } ?>
+                <?php if ($data['kendaraan'] != '') { ?>
+                    <tr>
+                        <th>Kendaraan</th>
+                        <th><?php echo $data['kendaraan'] ?></th>
+                    </tr>
+                <?php } ?>
                 <tr>
                     <th>Nominal Transfer</th>
                     <th>Rp. <?php echo number_format($data["total"], 0, ',', '.');
                             ?></th>
                 </tr>
                 <tr>
-                    <th>Metode Pembayaran<?php if ($data['metode'] == 'gopay') {
-                                                echo 'Transfer via Gopay';
+                    <th>Metode Pembayaran : <?php if ($data['metode'] == 'gopay') {
+                                                echo 'Gopay';
                                             } elseif (strtolower($data['metode']) == 'bni' || strtolower($data['metode']) == 'bri' || strtolower($data['metode']) == 'bca') {
                                                 echo 'Transfer Bank';
                                             } ?>
