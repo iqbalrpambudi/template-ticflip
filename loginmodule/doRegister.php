@@ -6,7 +6,7 @@ if (isset($_POST["register"])) {
 	$name = $_POST["inputName"];
 	$user = $_POST["inputUsername"];
 	$email = $_POST["inputEmail"];
-
+	$telepon = $_POST['inputNomor'];
 	$pass1 = $_POST["inputPassword1"];
 	$pass2 = $_POST["inputPassword2"];
 
@@ -18,7 +18,7 @@ if (isset($_POST["register"])) {
 		$result = $connect->query("SELECT * FROM tb_user WHERE username='$username' or email='$email'");
 
 		if ($result->num_rows == 0) {
-			$connect->query("INSERT INTO tb_user VALUES ('" . $user . "','" . $name . "','" . $pass1 . "','" . $email . "','',0,'user','N','','')");
+			$connect->query("INSERT INTO tb_user VALUES ('" . $user . "','" . $name . "','" . $pass1 . "','" . $email . "','',0,'user','N','','','$telepon')");
 			$_SESSION["message"] = 'Silahkan Login';
 			echo "<script type=text/javascript>
        	 			alert('Account successfully created');

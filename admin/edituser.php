@@ -41,8 +41,8 @@ include '../components/header-admin.php';
     $nama = $_POST['nama'];
     $email = $_POST['email'];
     $ban = $_POST['baned'];
-
-    $sql = mysqli_query($connect, "UPDATE tb_user SET username='$user', nama='$nama', email='$email', baned='$ban' WHERE username='$user'") or die(mysqli_error($connect));
+    $telepon = $_POST['telepon'];
+    $sql = mysqli_query($connect, "UPDATE tb_user SET username='$user', nama='$nama', email='$email', baned='$ban', telepon='$telepon' WHERE username='$user'") or die(mysqli_error($connect));
 
     if ($sql) {
       echo '<script>alert("Berhasil menyimpan data."); document.location="edituser.php?username=' . $user . '";</script>';
@@ -72,6 +72,12 @@ include '../components/header-admin.php';
       <label class="col-sm-2 col-form-label">EMAIL</label>
       <div class="col-sm-10">
         <input type="text" name="email" class="form-control" required value="<?php echo $data['email'] ?>">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">TELEPON</label>
+      <div class="col-sm-10">
+        <input type="text" name="telepon" class="form-control" required value="<?php echo $data['telepon'] ?>">
       </div>
     </div>
     <div class="form-group row">

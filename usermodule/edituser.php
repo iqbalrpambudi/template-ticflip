@@ -4,10 +4,11 @@ $nama = $_POST['nama'];
 $email = $_POST['email'];
 $alamat = $_POST['alamat'];
 $username = $_POST['username'];
+$telepon = $_POST['telepon'];
 
 if ($_FILES['file']['size'] == 0) {
     $conn = mysqli_connect('localhost', 'root', '', 'ticflip');
-    mysqli_query($conn, "UPDATE `tb_user` SET `nama` = '$nama', `email` = '$email', `alamat` = '$alamat' WHERE `tb_user`.`username` = '$username'");
+    mysqli_query($conn, "UPDATE `tb_user` SET `nama` = '$nama', `email` = '$email', `alamat` = '$alamat', telepon='$telepon' WHERE `tb_user`.`username` = '$username'");
     if ($terupload) {
         header('location:../user.php');
     } else {
@@ -37,7 +38,7 @@ if ($_FILES['file']['size'] == 0) {
     $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
 
     // update nama gambar ke database
-    mysqli_query($conn, "UPDATE `tb_user` SET `nama` = '$nama', `email` = '$email', `alamat` = '$alamat', `foto` = '$namaFile' WHERE `tb_user`.`username` = '$username'");
+    mysqli_query($conn, "UPDATE `tb_user` SET `nama` = '$nama', `email` = '$email', `alamat` = '$alamat', `foto` = '$namaFile', telepon='$telepon' WHERE `tb_user`.`username` = '$username'");
     if ($terupload) {
         header('location:../user.php');
     } else {

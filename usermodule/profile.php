@@ -14,6 +14,10 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email" id="email" value="<?php echo $getUserData['email']; ?>">
         </div>
+        <div class="form-group col-md-6">
+            <label for="telepon">Telepon</label>
+            <input type="text" class="form-control" name="telepon" id="telepon" value="<?php echo $getUserData['telepon']; ?>">
+        </div>
     </div>
     <div class="form-group">
         <label for="alamat">Alamat</label>

@@ -1,11 +1,21 @@
 <?php
+include './components/header.php';
+require_once './usermodule/koneksi.php';
+
 $id = $_GET['id'];
 $nama = $_GET['nama'];
 $tanggal = $_GET['tanggal'];
 $jumlah = $_GET['jumlah'];
 $harga = $_GET['harga'];
 
-include './components/header.php';
+$check = substr($id, 0, 2);
+if ($check == 'TC') {
+    $query = mysqli_query($conn, "SELECT foto from tb_tiket WHERE id_tiket='$id'");
+    $foto = mysqli_fetch_assoc($query);
+} else {
+    $query = mysqli_query($conn, "SELECT foto from tb_tour WHERE id_tour='$id'");
+    $foto = mysqli_fetch_assoc($query);
+}
 ?>
 
 
@@ -23,8 +33,12 @@ include './components/header.php';
                 <div class="container  p-3 rounded my-2 bg-white">
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <div class="card mx-auto">
-                                <img src="./assets/bali.jpg" class="card-img-top" alt="...">
+                            <div class="card mx-auto" style="height: 150px">
+                                <?php if ($foto['foto']) { ?>
+                                    <img src="./assets/background/<?php echo $foto['foto'] ?>" class="card-img-top " alt="...">
+                                <?php } else { ?>
+                                    <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                <?php }; ?>
                             </div>
                         </div>
                         <div class="col-md-8">

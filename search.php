@@ -53,7 +53,7 @@ if ($_POST['min'] > 0 && $_POST['max'] > 0) {
                 <div class="row">
                     <?php foreach ($query1 as $data) : ?>
                         <div class="col-lg-3">
-                            <a href="deskripsi-tiket.php?id=<?php echo $data['id_tiket'] ?>">
+                            <a href="deskripsi-tour.php?id=<?php echo $data['id_tour'] ?>">
                                 <div class="card mx-auto mb-3">
                                     <div class="card-img-caption">
 
@@ -66,7 +66,11 @@ if ($_POST['min'] > 0 && $_POST['max'] > 0) {
                                                                         echo '<i class="fa fa-star text-warning"></i>';
                                                                     }
                                                                     ?></span>
-                                        <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">
+                                        <?php if ($data['foto']) { ?>
+                                            <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
+                                        <?php } else { ?>
+                                            <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                        <?php }; ?>
                                     </div>
                                 </div>
                             </a>
