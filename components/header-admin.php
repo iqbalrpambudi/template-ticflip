@@ -2,6 +2,9 @@
 $username = $_SESSION['username'];
 $queryprofile = mysqli_query($connect, "SELECT * FROM tb_user WHERE username='$username'");
 $getUserProfile = mysqli_fetch_assoc($queryprofile);
+if ($_SESSION['role'] != 'admin') {
+    header('location:../user.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
