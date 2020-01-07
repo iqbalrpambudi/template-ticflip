@@ -30,8 +30,8 @@ include '../components/header-admin.php';
   ?>
 
   <?php
-    $querypaket = mysqli_query($connect, "SELECT * fROM tb_tour WHERE id_tour='$id'");
-    $data = mysqli_fetch_assoc($querypaket);
+  $querypaket = mysqli_query($connect, "SELECT * fROM tb_tour WHERE id_tour='$id'");
+  $data = mysqli_fetch_assoc($querypaket);
   ?>
 
   <?php
@@ -42,27 +42,38 @@ include '../components/header-admin.php';
     $fas = $_POST['fasilitas'];
     $harga = $_POST['harga'];
 
-    // ambil data file
-    $namaFile = $_FILES['file']['name'];
-    $namaSementara = $_FILES['file']['tmp_name'];
 
-    // lokasi file yang akan diupload
-    $dirUpload = "../assets/background/";
+    if ($_FILES['file']['size'] != 0) {
+      // ambil data file
+      $namaFile = $_FILES['file']['name'];
+      $namaSementara = $_FILES['file']['tmp_name'];
 
-    // Ambil nama gambar sebelumnya di database
-    $lastPicQuery = mysqli_query($connect, "SELECT foto FROM tb_tour WHERE id_tour='$id'");
-    $lastPic = mysqli_fetch_assoc($lastPicQuery);
+      // lokasi file yang akan diupload
+      $dirUpload = "../assets/background/";
 
-    // jika nama gambar ada di database maka hapus 
-    if ($lastPic['foto']) {
-      unlink($dirUpload . $lastPic['foto']);
-    }
+      // Ambil nama gambar sebelumnya di database
+      $lastPicQuery = mysqli_query($connect, "SELECT foto FROM tb_tour WHERE id_tour='$id'");
+      $lastPic = mysqli_fetch_assoc($lastPicQuery);
 
-    // memindahkan file ke direktori server
-    $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
+      // jika nama gambar ada di database maka hapus 
+      if ($lastPic['foto']) {
+        unlink($dirUpload . $lastPic['foto']);
+      }
 
-    // update nama gambar ke database
-    $sql = mysqli_query($connect, "UPDATE tb_tour SET nama='$nama', deskripsi='$des', fasilitas='$fas', harga='$harga', foto='$namaFile' WHERE id_tour='$id'") or die(mysqli_error($connect));
+      // memindahkan file ke direktori server
+      $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
+
+      // update nama gambar ke database
+      $sql = mysqli_query($connect, "UPDATE tb_tour SET nama='$nama', deskripsi='$des', fasilitas='$fas', harga='$harga', foto='$namaFile' WHERE id_tour='$id'") or die(mysqli_error($connect));
+
+      if ($sql) {
+        echo '<script>alert("Berhasil menyimpan data."); document.location="editpaket.php?id_tour=' . $id . '";</script>';
+      } else {
+        echo '<div class="alert alert-warning">Gagal melakukan proses edit data.</div>';
+      }
+    } else
+      // update nama gambar ke database
+      $sql = mysqli_query($connect, "UPDATE tb_tour SET nama='$nama', deskripsi='$des', fasilitas='$fas', harga='$harga' WHERE id_tour='$id'") or die(mysqli_error($connect));
 
     if ($sql) {
       echo '<script>alert("Berhasil menyimpan data."); document.location="editpaket.php?id_tour=' . $id . '";</script>';
@@ -102,7 +113,7 @@ include '../components/header-admin.php';
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">UPLOAD FOTO</label>
       <div class="col-sm-10">
-        <input type="file" name="file" id="upload" class="form-control" required value="foto">
+        <input type="file" name="file" id="upload" value="foto">
       </div>
     </div>
     <div class="form-group row">

@@ -19,7 +19,7 @@
                             </tr>
                             <tr>
                                 <th>Total</small></th>
-                                <td><input type="text" name="total" class="form-control" value="<?php echo $paid['total']; ?>" readonly></td>
+                                <td><input type="text" name="total" class="form-control" value="Rp. <?php echo number_format($paid['total'], 0, ',', '.'); ?>" readonly></td>
                             </tr>
                             <tr>
                                 <th>Metode</small></th>
@@ -36,15 +36,15 @@
                         </table>
                         <hr>
                         <?php if (strtolower($paid['metode']) == 'bni') {
-                                echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke rekening " . $paid['metode'] . " <span class='font-weight-bold'>5555-01-111122-55-8</span></p>";
-                            } elseif (strtolower($paid['metode']) == 'bri') {
-                                echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke rekening " . $paid['metode'] . " <span class='font-weight-bold'>345710400</span></p>";
-                            } elseif (strtolower($paid['metode']) == 'bca') {
-                                echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke rekening " . $paid['metode'] . " <span class='font-weight-bold'>0373115250</span></p>";
-                            } elseif (strtolower($paid['metode']) == 'gopay') {
-                                echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke nomor " . $paid['metode'] . " <span class='font-weight-bold'>085655638843</span></p>";
-                            }
-                            ?>
+                            echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke rekening " . $paid['metode'] . " <span class='font-weight-bold'>5555-01-111122-55-8</span></p>";
+                        } elseif (strtolower($paid['metode']) == 'bri') {
+                            echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke rekening " . $paid['metode'] . " <span class='font-weight-bold'>345710400</span></p>";
+                        } elseif (strtolower($paid['metode']) == 'bca') {
+                            echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke rekening " . $paid['metode'] . " <span class='font-weight-bold'>0373115250</span></p>";
+                        } elseif (strtolower($paid['metode']) == 'gopay') {
+                            echo "<p class='alert alert-success'>Silahkan melakukan pembayaran ke nomor " . $paid['metode'] . " <span class='font-weight-bold'>085655638843</span></p>";
+                        }
+                        ?>
                         <button type="submit" name="submit" class="btn btn-success">Konfirmasi</button>
                     </form>
                 </div>

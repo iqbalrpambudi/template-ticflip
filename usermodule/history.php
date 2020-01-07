@@ -26,8 +26,8 @@
                                 <tr>
                                     <th>Status</th>
                                     <td>: <p class="badge <?php if ($tax['status'] == 'lunas') echo 'badge-success';
-                                                                else echo 'badge-danger'; ?>"> <?php if ($tax['status'] == 'lunas') echo 'transaksi sukses';
-                                                                                                    else echo 'transaksi dibatalkan'; ?></p>
+                                                            else echo 'badge-danger'; ?>"> <?php if ($tax['status'] == 'lunas') echo 'transaksi sukses';
+                                                                                            else echo 'transaksi dibatalkan'; ?></p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -35,18 +35,23 @@
                                     <th>Rating</th>
                                     <td>
                                         <?php
-                                            $user = $_SESSION['username'];
-                                            $item = $tax['id_item'];
+                                        $user = $_SESSION['username'];
+                                        $item = $tax['id_item'];
+                                        $check = substr($item, 0, 2);
+                                        if ($check == 'TC') {
                                             $cek = mysqli_query($conn, "SELECT * FROM `tb_rating` WHERE username = '$user' and id_tiket='$item'");
-                                            $get = mysqli_fetch_assoc($cek);
-
-                                            ?>
+                                        } else {
+                                            $cek = mysqli_query($conn, "SELECT * FROM `tb_rating` WHERE username = '$user' and id_tour='$item'");
+                                        }
+                                        $get = mysqli_fetch_assoc($cek);
+                                        ?>
                                         <input type="number" min="0" max="5" class="form-control" name="rate" value="<?php echo (int) $get['rate'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><input class="btn btn-success" type="submit" name="submit " value="Beri Rating"></td>
+                                    <td><input class="btn btn-success" type="submit" name="submit " value="Beri Rating">
+                                        <a href="./laporan.php?id=<?php echo $tax['id_pembayaran']; ?>" class="btn btn-warning">Cetak PDF</a></td>
                                 </tr>
                             </tbody>
                         </form>
@@ -55,20 +60,20 @@
                 <div class="col-md-4 text-center">
                     <!-- Qr Code Generator -->
                     <?php require_once "./qrcode/qrlib.php";
-                        // Data QrCode
-                        QRcode::png(
-                            $tax['id_pembayaran'] . "\n"
-                                . $tax['item'] . "\n"
-                                . $tax['metode'] . "\n"
-                                . $tax['tanggal'] . "\n"
-                                . $tax['status'],
-                            // Output QR Image
-                            "./qr/" . $tax['id_pembayaran'] . "qr.png",
-                            "L",
-                            4,
-                            4
-                        );
-                        ?>
+                    // Data QrCode
+                    QRcode::png(
+                        $tax['id_pembayaran'] . "\n"
+                            . $tax['item'] . "\n"
+                            . $tax['metode'] . "\n"
+                            . $tax['tanggal'] . "\n"
+                            . $tax['status'],
+                        // Output QR Image
+                        "./qr/" . $tax['id_pembayaran'] . "qr.png",
+                        "L",
+                        4,
+                        4
+                    );
+                    ?>
                     <!-- Print Qr Code -->
                     <img src="<?php echo "/qr/" . $tax['id_pembayaran']; ?>qr.png" width="100px" />
                 </div>
