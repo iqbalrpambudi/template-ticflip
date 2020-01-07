@@ -75,7 +75,7 @@
                     );
                     ?>
                     <!-- Print Qr Code -->
-                    <img src="<?php echo "/qr/" . $tax['id_pembayaran']; ?>qr.png" width="100px" />
+                    <img src="<?php echo "./qr/" . $tax['id_pembayaran']; ?>qr.png" width="100px" />
                 </div>
             </div>
         </div>
