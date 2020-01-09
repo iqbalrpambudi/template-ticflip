@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2020 at 03:39 PM
+-- Generation Time: Jan 09, 2020 at 08:06 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -53,7 +53,7 @@ INSERT INTO `tb_checkout` (`id_checkout`, `id_tiket`, `id_tour`, `username`, `ju
 ('OR077', NULL, 'TR002', 'pambudi', 10, 2850000, '2020-01-08', 1, 'Hotel Wisma Sakinah', 'Innova'),
 ('OR078', NULL, 'TR002', 'pambudi', 10, 2422500, '2020-01-08', 1, 'Hotel Wisma Sakinah', 'Innova'),
 ('OR079', NULL, 'TR003', 'pambudi', 10, 3000000, '2020-01-11', 1, 'Red Doorz Hotel', 'Toyota Hiace'),
-('OR080', 'TC002', NULL, 'pambudi', 1, 21250, '2020-01-08', 1, '', '');
+('OR080', 'TC002', NULL, 'laily', 3, 63750, '2020-01-16', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,7 @@ CREATE TABLE `tb_count` (
 --
 
 INSERT INTO `tb_count` (`id`, `count`) VALUES
-(1, 162);
+(1, 212);
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,7 @@ INSERT INTO `tb_pembayaran` (`id_pembayaran`, `id_checkout`, `username`, `id_ite
 ('PB006', 'OR002', 'anwar', 'TC004', 'Museum 3D De Mata & De Ar', 'Gopay', '2019-12-16', 'das', 'lunas', 1),
 ('PB007', 'OR078', 'pambudi', 'TR002', 'Historical Trip', 'bni', '2020-01-07', 'das', 'lunas', 1),
 ('PB008', 'OR079', 'pambudi', 'TR003', 'Beach Trip', 'gopay', '2020-01-07', 'das', 'lunas', 1),
-('PB009', 'OR080', 'pambudi', 'TC002', 'Kebun Binatang Gembira Lo', 'bri', '2020-01-07', 'das', 'lunas', 1);
+('PB009', 'OR080', 'laily', 'TC002', 'Kebun Binatang Gembira Lo', 'bri', '2020-01-09', 'das', 'lunas', 1);
 
 -- --------------------------------------------------------
 
@@ -230,7 +230,31 @@ INSERT INTO `tb_rating` (`username`, `id_tiket`, `id_tour`, `rate`, `comments`) 
 ('anwar', 'TC004', NULL, 4, NULL),
 ('iqbal', 'TC006', NULL, 3, NULL),
 ('pambudi', 'TC005', NULL, 4, NULL),
-('pambudi', NULL, 'TR003', 5, NULL);
+('pambudi', NULL, 'TR003', 5, NULL),
+('laila', NULL, 'TR001', 4, NULL),
+('laily', 'TC002', NULL, 4, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_saran`
+--
+
+CREATE TABLE `tb_saran` (
+  `nama` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telp` varchar(15) NOT NULL,
+  `saran` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_saran`
+--
+
+INSERT INTO `tb_saran` (`nama`, `email`, `telp`, `saran`) VALUES
+('iqbal', 'iqbal.pambudi@gmail.com', '085655638843', 'guud'),
+('yogyakarta', 'bcmanado@gmail.com', '085655638843', 'asd'),
+('laily', 'laily@gmail.com', '876333333', 'bagus bro');
 
 -- --------------------------------------------------------
 
@@ -310,11 +334,13 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`username`, `nama`, `password`, `email`, `alamat`, `poin`, `role`, `baned`, `logintime`, `foto`, `telepon`) VALUES
-('anwar', 'khoirul anward', 'anwar', 'anwar@hotmail.com', 'Jl. Magelang, Sleman, Yogyakarta', 35, 'user', 'N', 0, 'fluid-elements-template-13-.jpg', ''),
+('anwar', 'anwar', 'anwar', 'anwar@hotmail.com', 'Jl. Magelang, Sleman, Yogyakarta', 35, 'user', 'N', 0, 'fluid-elements-template-13-.jpg', '08777777'),
 ('asd', 'asd', 'asd', 'asd@asd.com', '', 0, 'user', 'N', 0, '', ''),
 ('budiawan', 'Budi', 'budiawan', 'budiawan@gmail.com', 'Yogyakarta', 300, 'user', 'N', 0, 'IMG_1777.JPG', ''),
+('daffa', 'daffa', '123', 'daffa@daffa.co', 'joja', 0, 'user', 'N', 0, '2511619.png', '0812345678'),
 ('dodit', 'Dodit Mul', 'dodit', 'dodit@dodit.com', 'Bantul, Yogyakarta', 2, 'user', 'N', 0, '', ''),
-('iqbal', 'iqbal r', 'dsa', 'iqbalrpambudi@gmail.com', 'Solo', 40, 'admin', 'N', 0, 'Screenshot_56.png', '085655638843'),
+('iqbal', 'iqbal r', 'dsa', 'iqbalrpambudi@gmail.com', 'Solo', 70, 'admin', 'N', 0, 'Screenshot_56.png', '085655638843'),
+('laily', 'laily', '124', 'laily@gmail.com', 'Sleman', 10, 'user', 'N', 0, '2511619.png', '08988888'),
 ('pambudi', 'Iqbal', '123', 'iqbal@gmail.com', 'Sleman', 40, 'user', 'N', 0, 'linux-2025536_960_720.png', '087');
 
 --
