@@ -26,7 +26,9 @@
                                 <tr>
                                     <th>Status</th>
                                     <td>: <p class="badge <?php if ($tax['status'] == 'lunas') echo 'badge-success';
-                                                            else echo 'badge-danger'; ?>"> <?php if ($tax['status'] == 'lunas') echo 'transaksi sukses';
+                                                            else if ($tax['status'] == 'pending') echo 'badge-warning';
+                                                            else echo 'badge-success' ?>"> <?php if ($tax['status'] == 'lunas') echo 'transaksi sukses';
+                                                                                            else if ($tax['status'] == 'pending') echo 'pending';
                                                                                             else echo 'transaksi dibatalkan'; ?></p>
                                     </td>
                                 </tr>

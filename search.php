@@ -105,7 +105,11 @@ if ($_POST['min'] > 0 && $_POST['max'] > 0) {
                                                                         echo '<i class="fa fa-star text-warning"></i>';
                                                                     }
                                                                     ?></span>
-                                        <img class="card-img-top" src="./assets/bali.jpg" alt="Card image cap">
+                                        <?php if ($data['foto']) { ?>
+                                            <img src="./assets/background/<?php echo $data['foto'] ?>" class="card-img-top " alt="...">
+                                        <?php } else { ?>
+                                            <img src="./assets/bali.jpg" class="card-img-top " alt="...">
+                                        <?php }; ?>
                                     </div>
                                 </div>
                             </a>

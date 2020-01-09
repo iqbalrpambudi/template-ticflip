@@ -20,7 +20,7 @@
     <script src="./assets/jquery/jquery.min.js"></script>
     <script src="./assets/popper/popper.min.js"></script>
     <script src="./assets/bootstrap/js/bootstrap.min.js"> </script>
-    <title>Deskripsi</title>
+    <title>Ticflip</title>
 </head>
 
 <body class="bg-light">
@@ -49,6 +49,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="tiket.php"><i class="fas fa-ticket-alt mr-2"></i>Tiket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="about.php"><i class="fas fa-star mr-2"></i>About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-5">

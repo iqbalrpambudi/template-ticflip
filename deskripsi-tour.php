@@ -71,14 +71,14 @@
                                 <input type="number" min="10" max="50" required name="jumlah" id="jumlah" class="form-control">
                                 <h5 class="mt-4">Penginapan</h5>
                                 <select required id="inputState" name='penginapan' class="form-control">
-                                    <option value="0" selected>Pilih kendaraan</option>
+                                    <option value="0" selected>Pilih Penginapan</option>
                                     <?php foreach ($penginapanquery as $penginapan) : ?>
                                         <option value="<?php echo $penginapan['id_penginapan'] ?>"><?php echo $penginapan['nama'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                                 <h5 class="mt-4">Bus</h5>
                                 <select required id="inputState" name='kendaraan' class="form-control">
-                                    <option value="0" selected>Pilih Penginapan</option>
+                                    <option value="0" selected>Pilih Kendaraan</option>
                                     <?php foreach ($busquery as $bus) : ?>
                                         <option value="<?php echo $bus['id_kendaraan'] ?>"><?php echo $bus['nama'] ?></option>
                                     <?php endforeach ?>

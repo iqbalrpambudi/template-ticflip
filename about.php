@@ -8,7 +8,7 @@ include './homepagemodule/getdata.php';
             <p>Ticflip adalah aplikasi yang menyediakan tiket dan paket wisata. Kami menyediakan berbagai macam tiket mulai dari tiket wisata, tiket wahana. Selain itu kami juga menyediakan Paket wisata dengan fasilitas yang lengkap. </p>
             <h3 class="mt-5">Kontak Kami</h3>
             <p>Silahkan hubungi kami jika ada request pertanyaan maupun saran.</p>
-            <form>
+            <form action="./homepagemodule/doAbout.php" method="POST">
                 <div class="form-group">
                     <label>Nama</label>
                     <input type="text" class="form-control" name="nama" placeholder="Nama">
@@ -23,14 +23,14 @@ include './homepagemodule/getdata.php';
                         <div class="input-group-prepend">
                             <div class="input-group-text">+62</div>
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="81xxxx">
+                        <input type="text" name="telepon" class="form-control" id="inlineFormInputGroup" placeholder="81xxxx">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Kritik/Saran</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" name="saran" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Kirim Saran</button>
+                <button type="submit" name="submit" class="btn btn-primary">Kirim Saran</button>
             </form>
 
         </div>

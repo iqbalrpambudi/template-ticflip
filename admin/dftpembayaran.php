@@ -40,7 +40,8 @@ include '../components/header-admin.php';
                           <td>' . $data['username'] . '</td>
                           <td>' . $data['item'] . '</td>
                           <td>' . $data['tanggal'] . '</td>
-                          <td>' . $data['status'] . '</td>
+                          <td>' . $data['status'] . ' </td>
+                          <td> <a class="badge bagde-success" href="konfirmasi.php?id=' . $data['id_pembayaran'] . '">Konfirmasi</a> </td>
                         </tr>
                         ';
           $no++;

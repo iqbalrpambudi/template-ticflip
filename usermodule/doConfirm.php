@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
     $username = $_SESSION['username'];
-    mysqli_query($conn, "UPDATE `tb_pembayaran` SET `konfirmasi` = '1', `status`= 'lunas' WHERE `tb_pembayaran`.`id_pembayaran` = '$id'");
+    mysqli_query($conn, "UPDATE `tb_pembayaran` SET `konfirmasi` = '1', `status`= 'pending' WHERE `tb_pembayaran`.`id_pembayaran` = '$id'");
 
     $get = mysqli_query($conn, "SELECT poin from `tb_user` WHERE `username` = '$username'");
     $poin = mysqli_fetch_assoc($get);

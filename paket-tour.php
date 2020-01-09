@@ -40,7 +40,7 @@ height: 300px">
             <!-- Card -->
             <div class="col-md-3">
                 <a href="deskripsi-tour.php?id=<?php echo $data['id_tour'] ?>">
-                    <div class="card mx-auto mb-3" style="max-height:150px">
+                    <div class="card mx-auto mb-3" style="max-height:130px">
                         <div class="card-img-caption">
                             <h5 class="card-text text-light"><?php echo $data['nama'] ?></h5>
                             <div class="card">
